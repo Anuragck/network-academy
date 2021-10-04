@@ -1,9 +1,8 @@
 <template>
   <div>
-
-<!--loading preloader start-->
-<the-loading v-if="loading"></the-loading>
-<!--loading preloader end-->
+    <!--loading preloader start-->
+    <the-loading v-if="loading"></the-loading>
+    <!--loading preloader end-->
     <!-- course table  -->
 
     <div class="card mt-3 shadow" v-else>
@@ -246,8 +245,7 @@ export default {
       course_name: "",
       batch_time: "",
 
-
-loading:false,
+      loading: false,
     };
   },
 
@@ -271,7 +269,7 @@ loading:false,
     },
 
     getJoined(page = 1) {
-this.loading = true //the loading begin
+      this.loading = true; //the loading begin
       axios
         .get("admin/getJoinedStudents?page=" + page, {
           params: {
@@ -288,7 +286,8 @@ this.loading = true //the loading begin
           } else {
             this.record = false;
           }
-        }).finally(() => (this.loading = false)) ;// set loading to false when request finish;;
+        })
+        .finally(() => (this.loading = false)); // set loading to false when request finish;;
     },
 
     courseCompleted(joined) {
@@ -310,7 +309,7 @@ this.loading = true //the loading begin
               });
             }
 
-            if (response.data == "existingUser") {
+            if (response.data == "existing-user") {
               Toast.fire({
                 icon: "error",
                 title: "Already Completed",

@@ -474,9 +474,12 @@ export default {
         .catch((err) => {});
     },
     courseSyllabus(v) {
+       this.isloading = true;
       this.course.course_syllabus = v.target.files[0];
+       this.isloading = false;
     },
     CourseImage(ev) {
+       this.isloading = true;
       var image;
       var vm = this;
       const file = ev.target.files[0];
@@ -507,10 +510,12 @@ export default {
               });
               image = file2;
               vm.course.course_image = image;
-              console.log(vm.course.course_image);
+             
             });
         };
       };
+
+       this.isloading = false;
     },
     clear_form_field() {
       for (let data in this.course) {

@@ -61,7 +61,7 @@ const routes = [
     { path: '/categories-table', component: require('./components/admins/categoriesTable.vue').default },
     { path: '/batches-table', component: require('./components/admins/batchesTable.vue').default },
 
-    { path: '/enrolled-enquiry', component: require('./components/admins/enquiriesTable.vue').default },
+    { path: '/enquiry-table', component: require('./components/admins/enquiriesTable.vue').default },
     { path: '/joined-students', component: require('./components/admins/joinedStudents.vue').default },
     { path: '/dropped-list', component: require('./components/admins/droppedList.vue').default },
 

@@ -21,9 +21,8 @@ class JoinedStudentsController extends Controller
 
 
 
-
         $students = JoinedStudent::with(['getCourseNames'  => function ($query) {
-            $query->select('id', 'course_name');
+            $query->select('id', 'course_name','course_code');
         }, 'getCourseBatches'])->orderBy('id', 'DESC');
 
 

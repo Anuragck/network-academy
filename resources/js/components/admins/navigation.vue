@@ -12,7 +12,7 @@
         >
       </li>
       <li>
-        <router-link to="/enrolled-enquiry"
+        <router-link to="/enquiry-table"
           ><i class="fas fa-table"></i> Enquiry List</router-link
         >
       </li>

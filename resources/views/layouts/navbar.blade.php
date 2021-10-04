@@ -39,7 +39,7 @@ Fixed Navigation
 
 
             <li class="nav-item ">
-              <a class="nav-link" href="/verifyCertificate">Verify Certificate</a>
+              <a class="nav-link" href="/verify-certificate-page">Verify Certificate</a>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" href="/login">Login</a>

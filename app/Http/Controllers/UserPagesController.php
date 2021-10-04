@@ -55,8 +55,8 @@ $category_list=CourseCategory::orderBy('id', 'DESC')->get();
         return view('users.contact');
     }
 
-    public function verifyCertificate(){
-        return view('users.verifyCertificate');
+    public function verifyCertificatePage(){
+        return view('users.verifyCertificatePage');
     }
 
     public function courseMain($id)

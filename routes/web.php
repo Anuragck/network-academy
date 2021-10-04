@@ -42,7 +42,10 @@ Route::get('/contact', [UserPagesController::class, 'contact']);
 Route::get('/terms', [UserPagesController::class, 'terms']);
 Route::get('/privacy-policy', [UserPagesController::class, 'privacy']);
 
-Route::get('/verifyCertificate', [UserPagesController::class, 'verifyCertificate']);
+Route::get('/verify-certificate-page', [UserPagesController::class, 'verifyCertificatePage']);
+Route::get('/verify-certificate', [CertificateController::class, 'verifyCertificate']);
+
+
 Route::get('/courseView/{id}', [UserPagesController::class, 'courseMain']);
 
 Route::get('/index-page-courses', [CourseController::class, 'getIndexPageCourses']);
@@ -132,7 +135,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 });
 
 
-Route::get('certificate-landing', [CertificateController::class, 'publicLink']);
+
 
 
 

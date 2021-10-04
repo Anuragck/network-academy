@@ -17,6 +17,7 @@ class CreateCertificatesTable extends Migration
             $table->id();
 
             $table->bigInteger('student_id')->unsigned();
+            $table->bigInteger('course_id');
             $table->string('certificate_id');
             $table->string('certificate_path');
 

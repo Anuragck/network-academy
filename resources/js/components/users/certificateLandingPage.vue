@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-8" >
               <div class="card-body" style="background:#7fc24149;">
-                <h5 class="card-title">Completed By Anurag Ck</h5>
+                <h5 class="card-title">Completed By {{students_details.student_name}}</h5>
                 <p class="card-text text-justify">
                   Anurag Ck's account is verified. Network Academy certifies
                   their successful completion of -- Course name here ---.
@@ -60,13 +60,20 @@
 
       </div>
 
-      <div class="col-md-6  ">
+      <div class="col-md-6  " >
+
+
+
+     
         <img
-          src="/uploads/certificate_templates/format.jpg"
+          :src="'/uploads/completion_certificates/'+certificate_details.certificate_id+'.jpg'"
           class="img-fluid"
           alt="Responsive image"
           width=""
-        />
+        /> 
+
+
+
       </div>
 
   </div>
@@ -75,11 +82,19 @@
 </template>
 <script>
 export default {
+   props:['certificate_details','students_details'],
   data() {
+   
     return {};
   },
 
-  created() {},
+  created() {
+
+
+console.log(this.certificate_details.certificate_id);
+
+
+  },
 
   methods: {},
 };

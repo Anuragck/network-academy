@@ -61,7 +61,7 @@ const routes = [
     { path: '/categories-table', component: require('./components/admins/categoriesTable.vue').default },
     { path: '/batches-table', component: require('./components/admins/batchesTable.vue').default },
 
-    { path: '/enrolled-enquiry', component: require('./components/admins/enquiriesTable.vue').default },
+    { path: '/enquiry-table', component: require('./components/admins/enquiriesTable.vue').default },
     { path: '/joined-students', component: require('./components/admins/joinedStudents.vue').default },
     { path: '/dropped-list', component: require('./components/admins/droppedList.vue').default },
 
@@ -114,6 +114,9 @@ Vue.component('add-fee-payment', require('./components/admins/addFeePayment.vue'
 Vue.component('course-fee-payment-history', require('./components/admins/courseFeePaymentHistory.vue').default );
 
 
+Vue.component('the-loading', require('./components/admins/loading.vue').default );
+
+Vue.component('certificate-landing-page', require('./components/users/certificateLandingPage.vue').default);
 
 
 
@@ -121,3 +124,5 @@ const app = new Vue({
     el: '#app',
     router
 });
+
+
