@@ -5,15 +5,15 @@
         <div class="row">
           <div class="col-md-12">
             <p>Course Certificate</p>
-            <h4>Course Name Here</h4>
+            <h5>{{ students_details.get_course_names.course_name }}</h5>
           </div>
         </div>
       </div>
     </section>
 
     <div class="row px-5 mb-5 pb-5">
-      <div class="col-md-6  " >
-        <div class="card mb-3 border-0 shadow-sm"  >
+      <div class="col-md-6">
+        <div class="card mb-3 border-0 shadow-sm">
           <div class="row no-gutters">
             <div class="col-md-4 text-center">
               <img
@@ -23,77 +23,106 @@
                 width="100px"
               />
             </div>
-            <div class="col-md-8" >
-              <div class="card-body" style="background:#7fc24149;">
-                <h5 class="card-title">Completed By {{students_details.student_name}}</h5>
+            <div class="col-md-8">
+              <div class="card-body" style="background: #7fc24149">
+                <h5 class="card-title">
+                  Completed By {{ students_details.student_name }}
+                </h5>
                 <p class="card-text text-justify">
-                  Anurag Ck's account is verified. Network Academy certifies
-                  their successful completion of -- Course name here ---.
+                  {{ students_details.student_name }} 's account is verified.
+                  Network Academy certifies their successful completion of
+                  {{ students_details.get_course_names.course_name }} course.
                 </p>
                 <p class="card-text">
-                  <small class="text-muted">20 September 2021</small>
+                  <small class="text-muted">{{
+                    certificate_details.created_at | myDate
+                  }}</small>
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-<div class="card border-0 ">
-  <div class="card-body">
-    <h5>Course Name Here </h5>
-<p class="text-justify">Course short description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-<button class="btn btn-dark rounded-pill float-right">Enroll Now</button>
-  </div>
-</div>
+        <div class="card border-0">
+          <div class="card-body">
+            <h5>{{ students_details.get_course_names.course_name }}</h5>
+            <p class="text-justify">
+              {{ students_details.get_course_names.small_description }}
+            </p>
+            <button
+              class="btn btn-dark rounded-pill float-right"
+              type="button"
+              data-toggle="modal"
+              data-target="#enquire_single_Modal"
+            >
+              Enroll Now <i class="fas fa-angle-double-right fa-fw"></i>
+            </button>
+          </div>
+        </div>
 
-
-<div class="card mt-2 border-0 ">
-  <div class="card-body ">
-    <h6>Course Description </h6>
-<p class="text-justify">Course Detailed description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Course Detailed description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.Course Detailed description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Course Detailed description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.Course Detailed description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-
-
-<button class="btn btn-dark rounded-pill float-right mt-3">Download Syllabus</button>
-
-  </div>
-</div>
-
+        <div class="card mt-2 border-0">
+          <div class="card-body">
+            <h6>Course Description</h6>
+            <p
+              class="text-justify"
+              v-html="students_details.get_course_names.course_description"
+            >
+              {{ students_details.get_course_names.course_description }}
+            </p>
+ <a v-if="students_details.get_course_names.course_syllabus != null"
+                    class="btn btn-dark rounded-pill float-right mt-3"
+                    :href="'/uploads/course_syllabus/' + students_details.get_course_names.course_syllabus" download="download"
+                  >
+                    Syllabus <i class="fas fa-download fa-fw"></i
+                  ></a>
+            <!--<button class="btn btn-dark rounded-pill float-right mt-3">Download Syllabus</button>-->
+          </div>
+        </div>
       </div>
 
-      <div class="col-md-6  " >
-
-
-
-     
+      <div class="col-md-6">
         <img
-          :src="'/uploads/completion_certificates/'+certificate_details.certificate_id+'.jpg'"
+          :src="
+            '/uploads/completion_certificates/' +
+            certificate_details.certificate_id +
+            '.jpg'
+          "
           class="img-fluid"
           alt="Responsive image"
           width=""
-        /> 
-
-
-
+        />
       </div>
+    </div>
+    <div
+      class="modal fade"
+      id="enquire_single_Modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel4"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg"
+        role="document"
+      >
+        <div class="modal-content">
+          <enquiry-form> </enquiry-form>
+        </div>
+      </div>
+    </div>
 
-  </div>
-
+    <!--**************ENQUIRE-NOW-MODAL END)*****************************************************************-->
   </div>
 </template>
 <script>
 export default {
-   props:['certificate_details','students_details'],
+  props: ["certificate_details", "students_details"],
   data() {
-   
     return {};
   },
 
   created() {
-
-
-console.log(this.certificate_details.certificate_id);
-
-
+    console.log(this.students_details);
   },
 
   methods: {},

@@ -15,11 +15,11 @@
 </section>
 
 
-<!--Demo Link Only-->
+{{-- <!--Demo Link Only-->
 <div class="text-center">
 <a href="/verify-certificate/1">Certificate Landing Page Demo</a>
 </div>
-<!--Demo Link Only end -->
+<!--Demo Link Only end --> --}}
 
 
 
@@ -27,7 +27,7 @@
 <div class="registration-form">
 
     <form method="get" action="/verify-certificate/">
-       
+
 
         <h5 class="text-center mb-3 text-muted ">Verify Certificate Here</h5>
         <div class="text-center">
@@ -40,10 +40,10 @@
                 {{ $alert }}
             </div>
         @endif
-        
+
             <input id="certificate" name="certificate_id" type="text" placeholder="Enter Certificate Number" class="form-control item"autofocus required>
-           
-          
+
+
 
 
         </div>

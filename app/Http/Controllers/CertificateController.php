@@ -87,7 +87,7 @@ class CertificateController extends Controller
 
 
                 $students_details = JoinedStudent::with(['getCourseNames'  => function ($query) {
-                    $query->select('id', 'course_name', 'course_code');
+                    $query->select('id', 'course_name', 'course_code','small_description','course_description','course_syllabus');
                 }, 'getCourseBatches'])->where('enquired_id', '=', $certificate_details->student_id)->first();
 
 
