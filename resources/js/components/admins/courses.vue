@@ -8,6 +8,7 @@
         class="close"
         data-dismiss="modal"
         aria-label="Close"
+@click.prevent="clear_form_field()"
       >
         <span aria-hidden="true">&times;</span>
       </button>
@@ -110,7 +111,7 @@
                     >
                   </div>
 
-       <div class="form-group">
+                  <div class="form-group">
                     <label for="Coursename" class="text-muted font-weight-bold"
                       >Course Syllabus</label
                     >
@@ -130,29 +131,58 @@
                       {{ errors.course_syllabus[0] }}</small
                     >
                   </div>
-
-
-
-
-
                 </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label for="Coursename" class="text-muted font-weight-bold"
-                      >Course Duration
-                    </label>
-                    <input
-                      type="text"
-                      class="form-control item shadow-sm"
-                      id="course_duration"
-                      name="course_duration"
-                      placeholder="Enter course duration "
-                      v-model="course.course_duration"
-                    />
 
-                    <small class="text-danger" v-if="errors.course_duration">
-                      {{ errors.course_duration[0] }}</small
-                    >
+                <div class="col">
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label
+                          for="Coursename"
+                          class="text-muted font-weight-bold"
+                          >Course Duration
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control item shadow-sm"
+                          id="course_duration"
+                          name="course_duration"
+                          placeholder="Enter course duration "
+                          v-model="course.course_duration"
+                        />
+
+                        <small
+                          class="text-danger"
+                          v-if="errors.course_duration"
+                        >
+                          {{ errors.course_duration[0] }}</small
+                        >
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label
+                          for="Coursename"
+                          class="text-muted font-weight-bold "
+                          >Select Duration Type</label
+                        >
+
+                        <select
+                          class="form-control item pb-1 shadow-sm"
+                          id="course_duration_type"
+                          name="course_duration_type"
+v-model="course.course_duration_type"
+                        >
+                          <option value="">Select Duration Type</option>
+                          <option value="Days">Days</option>
+                            <option value="Months">Months</option>
+                            <option value="Years">Years</option>
+                        </select>
+
+                        <small class="text-danger" v-if="errors.course_duration_type">
+                      {{ errors.course_duration_type[0] }}</small>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="form-group">
@@ -236,7 +266,7 @@
                     >
                   </div>
 
-                <!--  <div class="form-group">
+                  <!--  <div class="form-group">
                     <label for="Coursename" class="text-muted font-weight-bold"
                       >Course Syllabus</label
                     >
@@ -259,30 +289,28 @@
                 </div>
               </div>
 
- <div class="form-group">
-                      <label for="Coursename" class="text-muted font-weight-bold">Enter Small Description for Course</label> <small class="font-weight-bold" style="color:#264284;">( {{  remaincharactersText }} )</small>
-<!-- <small class="text-muted"> ( Must be at least 150 characters and must not be greater than 250 characters. )</small> -->
-                        <textarea
-                          class="form-control form-height item shadow-sm"
-                          rows="2"
-                          name="small_description"
-                        placeholder="Please enter course small description"
-                          v-model="course.small_description"
-                        @keyup='remaincharCount()'
-                        >
-                        </textarea>
+              <div class="form-group">
+                <label for="Coursename" class="text-muted font-weight-bold"
+                  >Enter Small Description for Course</label
+                >
+                <small class="font-weight-bold" style="color: #264284"
+                  >( {{ remaincharactersText }} )</small
+                >
+                <!-- <small class="text-muted"> ( Must be at least 150 characters and must not be greater than 250 characters. )</small> -->
+                <textarea
+                  class="form-control form-height item shadow-sm"
+                  rows="2"
+                  name="small_description"
+                  placeholder="Please enter course small description"
+                  v-model="course.small_description"
+                  @keyup="remaincharCount()"
+                >
+                </textarea>
 
-
-
-                      <small
-                        class="text-danger"
-                        v-if="errors.small_description"
-                        >{{ errors.small_description[0] }}</small
-                      >
-                    </div>
-
-
-
+                <small class="text-danger" v-if="errors.small_description">{{
+                  errors.small_description[0]
+                }}</small>
+              </div>
 
               <div class="form-group">
                 <label for="Coursename" class="text-muted font-weight-bold"
@@ -333,9 +361,9 @@ export default {
   props: ["edit", "category_list"],
   data() {
     return {
- maxcharacter: 250,
-    mincharecter:150,
-    remaincharactersText: "Minimum 150 characters.",
+      maxcharacter: 250,
+      mincharecter: 150,
+      remaincharactersText: "Minimum 150 characters.",
 
       customToolbar: [
         [{ header: [false, 1, 2, 3, 4, 5, 6] }],
@@ -365,6 +393,7 @@ export default {
         small_description: "",
         course_description: "",
         course_duration: "",
+        course_duration_type:"",
         course_fee: "",
         course_certification_fee: "",
         course_certification_code: "",
@@ -391,6 +420,7 @@ export default {
         vm.course.small_description = course.small_description;
         vm.course.course_description = course.course_description;
         vm.course.course_duration = course.course_duration;
+vm.course.course_duration_type = course.course_duration_type;
         vm.course.course_fee = course.course_fee;
         vm.course.course_certification_fee = course.course_certification_fee;
         vm.course.course_certification_code = course.course_certification_code;
@@ -398,25 +428,24 @@ export default {
     }
   },
   methods: {
+    remaincharCount: function () {
+      var remainCharacters =
+        this.mincharecter - this.course.small_description.length;
 
-  remaincharCount: function(){
-        var remainCharacters=this.mincharecter - this.course.small_description.length;
-
-         if(this.course.small_description.length > this.maxcharacter){
-           this.remaincharactersText = " Exceeded "+this.maxcharacter+" characters limit. ";
-
-         }else if(this.course.small_description.length < this.mincharecter ){
-                this.remaincharactersText= " Minimum " + remainCharacters + " characters needed. ";
- //    var remainCharacters = this.mincharecter - this.course.small_description.length;
-        //    this.remaincharactersText= " Minimum " + remainCharacters + " characters needed. ";
-
-         }else{
-            this.remaincharactersText="Maximum 250 charecters";
+      if (this.course.small_description.length > this.maxcharacter) {
+        this.remaincharactersText =
+          " Exceeded " + this.maxcharacter + " characters limit. ";
+      } else if (this.course.small_description.length < this.mincharecter) {
+        this.remaincharactersText =
+          " Minimum " + remainCharacters + " characters needed. ";
         //    var remainCharacters = this.mincharecter - this.course.small_description.length;
         //    this.remaincharactersText= " Minimum " + remainCharacters + " characters needed. ";
-         }
-
-       },
+      } else {
+        this.remaincharactersText = "Maximum 250 charecters";
+        //    var remainCharacters = this.mincharecter - this.course.small_description.length;
+        //    this.remaincharactersText= " Minimum " + remainCharacters + " characters needed. ";
+      }
+    },
     addCourse() {
       this.isloading = true;
       let upload = new FormData();
@@ -430,6 +459,7 @@ export default {
       upload.append("small_description", this.course.small_description);
       upload.append("course_description", this.course.course_description);
       upload.append("course_duration", this.course.course_duration);
+ upload.append("course_duration_type", this.course.course_duration_type);
       upload.append("course_fee", this.course.course_fee);
       upload.append(
         "course_certification_fee",
@@ -452,10 +482,10 @@ export default {
             this.$refs.course_image.value = "";
             bus.$emit("course-added");
 
- Toast.fire({
-            icon: 'success',
-            title: 'Course Added successfully'
-            })
+            Toast.fire({
+              icon: "success",
+              title: "Course Added successfully",
+            });
           }
           this.isloading = false;
         })
@@ -474,12 +504,12 @@ export default {
         .catch((err) => {});
     },
     courseSyllabus(v) {
-       this.isloading = true;
+      this.isloading = true;
       this.course.course_syllabus = v.target.files[0];
-       this.isloading = false;
+      this.isloading = false;
     },
     CourseImage(ev) {
-       this.isloading = true;
+      this.isloading = true;
       var image;
       var vm = this;
       const file = ev.target.files[0];
@@ -491,7 +521,7 @@ export default {
         const imgElement = document.createElement("img");
         imgElement.src = event.target.result;
         imgElement.onload = function (e) {
-         const canvas = document.createElement("canvas");
+          const canvas = document.createElement("canvas");
           // const MAX_WIDTH = 400;
           const MAX_WIDTH = 970;
           // const scaleSize = MAX_WIDTH / e.target.width;
@@ -510,12 +540,11 @@ export default {
               });
               image = file2;
               vm.course.course_image = image;
-             
             });
         };
       };
 
-       this.isloading = false;
+      this.isloading = false;
     },
     clear_form_field() {
       for (let data in this.course) {

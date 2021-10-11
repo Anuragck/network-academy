@@ -60,8 +60,8 @@
         </div>
     </form>
     <div class="social-media">
-<a href="/register">
-        <h5 >Click Here To Register</h5></a>
+{{-- <a href="/register">
+        <h5 >Click Here To Register</h5></a> --}}
         <div class="social-icons">
 
         </div>

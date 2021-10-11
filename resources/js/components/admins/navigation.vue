@@ -6,11 +6,11 @@
           ><i class="fas fa-user-graduate"></i> Dashboard
         </router-link>
       </li>
-      <li>
+      <!-- <li>
         <router-link to="forms.html"
           ><i class="fas fa-users"></i> All Registered Users</router-link
         >
-      </li>
+      </li> -->
       <li>
         <router-link to="/enquiry-table"
           ><i class="fas fa-table"></i> Enquiry List</router-link

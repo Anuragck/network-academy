@@ -24,6 +24,7 @@ class CourseController extends Controller
             "small_description"  => ['required', 'min:150', 'max:250'],
             "course_description"  => 'required',
             "course_duration"  => 'required',
+            'course_duration_type'=>'required',
             "course_fee"  => 'required',
             "course_certification_fee"  => 'required',
             "course_certification_code"  => 'required',
@@ -47,6 +48,7 @@ class CourseController extends Controller
         $course->small_description = $request->small_description;
         $course->course_description = $request->course_description;
         $course->course_duration = $request->course_duration;
+        $course->course_duration_type = $request->course_duration_type;
         $course->course_fee = $request->course_fee;
         $course->course_certification_fee = $request->course_certification_fee;
         $course->course_certification_code = $request->course_certification_code;

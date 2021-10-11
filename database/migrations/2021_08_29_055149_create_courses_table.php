@@ -22,6 +22,7 @@ class CreateCoursesTable extends Migration
             $table->text('small_description');
             $table->text('course_description');
             $table->string('course_duration');
+            $table->string('course_duration_type')->nullable();
             $table->integer('course_fee');
             $table->integer('course_certification_fee');
             $table->string('course_certification_code');

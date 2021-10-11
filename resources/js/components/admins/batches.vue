@@ -8,7 +8,7 @@
 
     <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-        <button type="button" class="close" ref='batches_close_btn' data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" ref='batches_close_btn' data-dismiss="modal" aria-label="Close" @click="clear_form_field()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -39,12 +39,12 @@
               >
 
               <select
-                class="form-control item shadow-sm"
+                class="form-control rounded-pill shadow-sm"
                 id="course_id"
                 name="course_id"
                 v-model="batch.course_id"
               >
-                <option value="" class="pb-3">Select Course</option>
+                <option value="" disabled>Select Course</option>
                 <option v-for=" course in course_list" :key="course.id" v-bind:value="course.id"> {{ course.course_name }} </option>
               </select>
 
@@ -61,7 +61,7 @@
               >
               <input
                 type="date"
-                class="form-control item shadow-sm"
+                class="form-control rounded-pill shadow-sm"
                 id="batch_starting_date"
                 name="batch_starting_date"
                 placeholder="batch_starting_date "
@@ -104,7 +104,7 @@
 
 <div class="col">
               <select
-                class="form-control item shadow-sm"
+                class="form-control rounded-pill shadow-sm"
                 id="course_id"
                 name="course_id"
                 v-model="batch.batch_time"
@@ -132,7 +132,7 @@
 <div class="col">
 
  <select
-                class="form-control item shadow-sm"
+                class="form-control rounded-pill shadow-sm"
                 id="course_id"
                 name="course_id"
                 v-model="batch.batch_time_minute"
@@ -160,7 +160,7 @@
 <div class="col">
 
  <select
-                class="form-control item shadow-sm"
+                class="form-control rounded-pill shadow-sm"
                 id="course_id"
                 name="course_id"
                 v-model="batch.batch_time_am_pm"
@@ -188,7 +188,7 @@
 
 <div class="col">
               <select
-                class="form-control item shadow-sm "
+                class="form-control rounded-pill shadow-sm "
                 id="course_id"
                 name="course_id"
                 v-model="batch.batch_end_time"
@@ -218,7 +218,7 @@
 <div class="col">
 
  <select
-                class="form-control item shadow-sm"
+                class="form-control rounded-pill shadow-sm"
                 id="course_id"
                 name="course_id"
                 v-model="batch.batch_end_time_minute"
@@ -244,7 +244,7 @@
 <div class="col">
 
  <select
-                class="form-control item shadow-sm"
+                class="form-control rounded-pill shadow-sm"
                 id="course_id"
                 name="course_id"
                 v-model="batch.batch_end_time_am_pm"
@@ -260,7 +260,7 @@
 
 
 
-            <div class="border-top text-center">
+            <div class="text-center">
               <div class="card-body text-end">
                 <button
                   type="submit"

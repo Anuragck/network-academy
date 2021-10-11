@@ -41,9 +41,9 @@ Fixed Navigation
             <li class="nav-item ">
               <a class="nav-link" href="/verify-certificate-page">Verify Certificate</a>
             </li>
-            <li class="nav-item ">
+            {{-- <li class="nav-item ">
                 <a class="nav-link" href="/login">Login</a>
-              </li>
+              </li> --}}
 
 
           </ul>

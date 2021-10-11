@@ -26,7 +26,7 @@ Welcome Slider
                   <i class="fas fa-hourglass-half fa-fw"></i> Duration :<span
                     class="font-weight-bold"
                   >
-                    {{ single_course.course_duration }}
+                    {{ single_course.course_duration }}  {{   single_course.course_duration_type }}
                   </span>
                 </p>
                 <p class="my-4">

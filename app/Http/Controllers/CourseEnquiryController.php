@@ -156,7 +156,7 @@ public function getEnquiry(Request $request){
 
     $enquiries= CourseEnquiry::with(['getCourseName'  => function ($query) {
         $query->select('id', 'course_name');
-    } ,'getCourseBatch'])          ->orderBy('priority_status', 'ASC');
+    } ,'getCourseBatch'])->where('lead_status', '0')->orderBy('priority_status', 'ASC');
 
 if($request->source){
 

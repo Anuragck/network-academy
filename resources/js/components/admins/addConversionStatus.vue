@@ -34,8 +34,9 @@
                   id="conversion-status"
                   name="convertionStatus"
                   v-model="conversion_data.convertionStatus"
+                autofocus
                 >
-                  <option  class="pb-3" selected> Choose conversion status </option>
+                   <option disabled selected value="">Select Convertion Status</option>
                   <option value="Joined">Joined</option>
                   <option value="Dropped">Dropped</option>
                 </select>
@@ -215,7 +216,20 @@ joinedFee:'',
             bus.$emit("AfterAction");
             this.$refs.add_conversion__close.click();
           }
-        })
+        if(response.data == "already dropped"){
+Swal.fire({
+  icon: 'error',
+  title: 'Already Dropped...',
+})
+        }
+
+ if(response.data == "already joined"){
+Swal.fire({
+  icon: 'error',
+  title: 'Already Joined...',
+})
+        }
+                })
         .catch((error) => {
           this.errors = error.response.data.errors;
           console.log("conversion-errors");

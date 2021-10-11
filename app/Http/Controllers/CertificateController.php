@@ -28,11 +28,22 @@ class CertificateController extends Controller
 
 
 
-            // alphanumeric random string generator
-            $length = 10;
-            $str = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+            // // alphanumeric random string generator
+            // $length = 10;
+            // $str = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
 
-            $certificate_id = substr(str_shuffle($str), 0, $length);
+            // $certificate_id = substr(str_shuffle($str), 0, $length);
+// alphanumeric random string generato
+
+            do {
+                $length = 8;
+                $str = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+
+                $certificate_id = substr(str_shuffle($str), 0, $length);
+
+                $found = Certificate::where('certificate_id', $certificate_id)->exists();
+            } while ( $found);
+
 
 
 

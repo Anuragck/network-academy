@@ -16,15 +16,15 @@
         </button>
         <span class="h5 font-weight-bold">Enquiry List</span>
         <div class="pr-3 mb-0">
-          <a href=""
+          <router-link to="/joined-students"
             ><span style="font-weight: bold" class="px-2 badge badge-success"
               ><small class="font-weight-bold">Joined List</small></span
-            ></a
+            ></router-link
           >
-          <a href=""
+          <router-link to="/dropped-list"
             ><span style="" class="px-2 badge badge-danger"
               ><small class="font-weight-bold">Dropped List</small></span
-            ></a
+            ></router-link
           >
         </div>
       </div>

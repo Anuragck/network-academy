@@ -103,6 +103,14 @@ if($request->convertionStatus == 'Dropped'){
 
     if($request->id){
         $convert = CourseEnquiry::find($request->id);
+        if( $convert->lead_status=='1'){
+            return 'already joined';
+            }
+
+            if( $convert->lead_status=='2'){
+                return 'already dropped';
+                }
+
          if($request->convertionStatus == 'Joined'){
             $convert->lead_status='1';
             $convert->conversion_remarks=$request->remarks;
@@ -134,9 +142,15 @@ if($request->convertionStatus == 'Dropped'){
             $convert->save();
         }
 
+
+
+
             if($convert->save() ){
             return 'success';
             }
+
+
+
 
 
 

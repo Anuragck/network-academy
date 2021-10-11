@@ -100,7 +100,7 @@
             </div>
 
               <div class="col-md-6">
-              <div class="form-group" v-if="enquiry_batches_list.length !== 0">
+              <div class="form-group" style="" >
                 <label
                   for="enquircoursetime"
                   class="text-muted font-weight-bold"
@@ -108,10 +108,30 @@
                   <span class="text-danger h4"> * </span></label
                 >
                 <select
+                    v-if="enquiry_batches_list.length == 0"
+                  v-model="enquiry.enquirer_preferred_course_time"
+                  name="enquirer_preferred_course_time"
+                  class="form-control rounded-pill shadow-sm enqry-input-border"
+                    disabled
+                >
+
+                  <option disabled value="">select intrested batch</option>
+                  <!-- <option
+                    v-for="batches in enquiry_batches_list"
+                    :key="batches.id"
+                    :value="batches.id"
+                  >
+                    {{ batches.batch_time }} to {{ batches.batch_end_time }}
+                    {{ "Batch Starting on" }} {{ batches.batch_starting_date }}
+                  </option> -->
+                </select>
+<select
+                    v-if="enquiry_batches_list.length !== 0"
                   v-model="enquiry.enquirer_preferred_course_time"
                   name="enquirer_preferred_course_time"
                   class="form-control rounded-pill shadow-sm enqry-input-border"
                 >
+
                   <option disabled value="">select intrested batch</option>
                   <option
                     v-for="batches in enquiry_batches_list"

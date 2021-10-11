@@ -86,6 +86,13 @@
       >
         Download Reciept <i class="fas fa-download fa-fw"></i>
       </button>
+
+<button
+        @click.prevent="clear_reciept()"
+        class="btn btn-dark rounded-pill btn-sm"
+      >
+        Clear Reciept <i class="fas fa-times fa-fw"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -119,6 +126,10 @@ export default {
 
       bus.$emit("clearReciept");
     },
+
+        clear_reciept(){
+       bus.$emit("clearReciept");
+        }
   },
 
   created() {

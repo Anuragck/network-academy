@@ -12,37 +12,6 @@
             <h6 class="pt-3 ml-2">Network Academy </h6>
         </div>
 
-
-        {{-- <ul class="list-unstyled components text-secondary">
-            <li>
-                <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
-            </li>
-            <li>
-                <a href="forms.html"><i class="fas fa-users"></i> All Registered Users</a>
-            </li>
-            <li>
-                <a href="tables.html"><i class="fas fa-table"></i> Enrolled Users</a>
-            </li>
-            <li>
-                <a href="charts.html"><i class="fas fa-user-graduate"></i>Admitted Students</a>
-            </li>
-            <li>
-                <a href="charts.html"><i class="fas fa-user-graduate"></i>Attendance</a>
-            </li>
-            <li>
-                <a href="charts.html"><i class="fas fa-user-graduate"></i>Follow Ups</a>
-            </li>
-            <li>
-                <a href="charts.html"><i class="fas fa-user-graduate"></i>Courses Add</a>
-            </li>
-
-            <li>
-                <a href="charts.html"><i class="fas fa-user-graduate"></i>Testimonials Add</a>
-            </li>
-
-
-
-        </ul> --}}
         <navigation-page> </navigation-page>
 
 
@@ -55,7 +24,19 @@
 
     <div id="navbar-body" class="">
 
-
+{{-- <!-- Example single danger button -->
+<div class="btn-group ml-auto ">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-user"></i> <span>{{ Auth::user()->username }}</span> <i
+        style="font-size: .8em;" ></i>
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#"><i class="fas fa-address-card fa-fw"></i>Profile</a>
+      <a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i> Change Password</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Logout</a>
+    </div>
+  </div> --}}
 
 
 
@@ -65,35 +46,9 @@
                 <i class="fas fa-bars"></i><span></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <div class="admin-nav-dropdown">
-                            <a href="#" id="nav1" class="nav-item nav-link dropdown-toggle"
-                                style="color: rgba(211, 203, 203, 0.884);" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-link"></i> <span>Quick Links</span> <i style="font-size: .8em;"
-                                    class="fas fa-caret-down"></i>
-                            </a>
 
-
-                            <div class="dropdown-menu dropdown-menu-first nav-link-menu" aria-labelledby="nav1">
-                                <ul class="nav-list">
-                                    <li><a href="" class="dropdown-item"><i class="fas fa-list"></i> Access Logs</a>
-                                    </li>
-                                    <div class="dropdown-divider"></div>
-                                    <li><a href="" class="dropdown-item"><i class="fas fa-database"></i> Back ups</a>
-                                    </li>
-                                    <div class="dropdown-divider"></div>
-                                    <li><a href="" class="dropdown-item"><i class="fas fa-cloud-download-alt"></i>
-                                            Updates</a></li>
-                                    <div class="dropdown-divider"></div>
-                                    <li><a href="" class="dropdown-item"><i class="fas fa-user-shield"></i> Roles</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                        </div>
-                    </li>
                     <li class="nav-item dropdown">
                         <div class="admin-nav-dropdown">
                             <a href="#" id="nav2" class="nav-item nav-link dropdown-toggle "
@@ -123,9 +78,13 @@
 
                                 </ul>
                             </div>
+
                         </div>
                     </li>
                 </ul>
+
+
+
 
             </div>
 

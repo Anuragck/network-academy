@@ -9,8 +9,10 @@
       <div class="card-header">
         <div class="row">
           <span class="h5 font-weight-bold float-right mt-4 pl-2 text-success"
-            >Joined Students List</span
+            >Joined Students List <small v-if="from_date =='' || from_date == todayDate "> ( Today Joined )</small></span
           >
+
+
 
           <div class="col-md-2 ml-auto">
             <div class="form-group">
@@ -229,9 +231,11 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
 export default {
   data() {
     return {
+    todayDate: moment().format("YYYY-MM-DD"),
       joinedStudents: {},
       course_list: {},
       batches_list: {},
@@ -257,6 +261,7 @@ export default {
     bus.$on("AfterActionJoined", () => {
       this.getJoined();
     });
+
   },
   methods: {
     addFeePayment(joined) {

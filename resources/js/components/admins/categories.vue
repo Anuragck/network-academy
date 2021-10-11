@@ -9,6 +9,7 @@
         class="close"
         data-dismiss="modal"
         aria-label="Close"
+@click="clear_form_field()"
       >
         <span aria-hidden="true">&times;</span>
       </button>

@@ -149,7 +149,8 @@
                     type="button"
                     class="btn btn-sm btn-outline-dark "
                     title="Add To Home"
-                    @click="addToHome(course)">
+                    @click="addToHome(course)"
+                    style="border-radius:50%">
 
                    <i v-if="course.add_to_home_status == '0'" class="far fa-star fa-fw  fa-star-course" style="color:#FFA500	;"></i>
 

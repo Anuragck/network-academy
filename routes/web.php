@@ -9,6 +9,7 @@ use App\Http\Controllers\CourseBatchController;
 use App\Http\Controllers\CourseEnquiryController;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminDashboardCountController;
 use App\Http\Controllers\DroppedListController;
 use App\Http\Controllers\EnrolledEnquiryController;
 use App\Http\Controllers\FeePaymentController;
@@ -123,7 +124,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'preventB
 
  Route::post('/course-completed', [CertificateController::class, 'generateCertificate']);
 
-
+ Route::get('/getCounts', [AdminDashboardCountController::class, 'getCountData']);
 });
 
 // user routes

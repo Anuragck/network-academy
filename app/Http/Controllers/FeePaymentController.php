@@ -18,6 +18,15 @@ public function addPayment(Request $request){
     ]);
 
     if($request->id){
+
+            $stuentId=$request->id;
+            $balanceAdd=JoinedStudent::where('enquired_id','=',$stuentId)->first();
+            $checkBalance=$balanceAdd->joined_course_fee-$balanceAdd->course_fee_recieved;
+
+            if($checkBalance < $request->payAmount){
+                return "fee_exceed";
+            }
+
             $feePayment=new CourseFeePayment();
             $feePayment->student_id=$request->id;
             $feePayment->paid_amount=$request->payAmount;
@@ -27,9 +36,9 @@ public function addPayment(Request $request){
 
             $feePayment->save();
 
-            $stuentId=$request->id;
+            // $stuentId=$request->id;
 
-            $balanceAdd=JoinedStudent::where('enquired_id','=',$stuentId)->first();
+            // $balanceAdd=JoinedStudent::where('enquired_id','=',$stuentId)->first();
 
 
                 $balanceAdd->course_fee_recieved= $balanceAdd->course_fee_recieved + $request->payAmount;
@@ -45,7 +54,7 @@ public function addPayment(Request $request){
 
         if($feePayment->save()){
 
-            $forRecirpt=CourseFeePayment::where('student_id','=',$request->id)->orderBy('id', 'desc')->first();;
+            $forRecirpt=CourseFeePayment::where('student_id','=',$request->id)->orderBy('id', 'desc')->first();
            return $forRecirpt;
 
         }
