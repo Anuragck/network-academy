@@ -120,7 +120,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'preventB
      Route::get('/get-payment-history', [FeePaymentController::class, 'getPaymentHistory']);
 
 
-     Route::get('/getDroppedList', [DroppedListController::class, 'getDropped']);
+     Route::get('/dropped-list', [DroppedListController::class, 'getDropped']);
 
  Route::post('/course-completed', [CertificateController::class, 'generateCertificate']);
 

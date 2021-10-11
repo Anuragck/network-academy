@@ -28,12 +28,8 @@ class CertificateController extends Controller
 
 
 
-            // // alphanumeric random string generator
-            // $length = 10;
-            // $str = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
 
-            // $certificate_id = substr(str_shuffle($str), 0, $length);
-// alphanumeric random string generato
+            // alphanumeric random string generator
 
             do {
                 $length = 8;
@@ -42,18 +38,25 @@ class CertificateController extends Controller
                 $certificate_id = substr(str_shuffle($str), 0, $length);
 
                 $found = Certificate::where('certificate_id', $certificate_id)->exists();
-            } while ( $found);
+            } while ($found);
 
 
 
 
             // certificate image code
             header('Content-type: image/jpeg');
-            $font = realpath('./uploads/certificate_templates/arial.ttf');
-            $image = imagecreatefromjpeg("./uploads/certificate_templates/format.jpg");
+            $name_font = realpath('./uploads/certificate_templates/name.ttf');
+            $common_font = realpath('./uploads/certificate_templates/name.ttf');
+            $image = imagecreatefromjpeg("./uploads/certificate_templates/Certificate.jpg");
+
+
             $color = imagecolorallocate($image, 255, 0, 0);
+
+
+            
             $date = date('d F, Y');
             $name = $request->student_name;
+            $course_name = $request->get_course_names['course_name'];
             $student_id = $request->id;
             $course_code = $request->get_course_names['course_code'];
             $certificate_id = $course_code . '-' . $student_id . '-' . $certificate_id;
@@ -61,13 +64,21 @@ class CertificateController extends Controller
             $path = "./uploads/completion_certificates/$certificate_id.jpg";
             $url = "http://network-academy.test/verify-certificate?certificate_id=$certificate_id";
 
-            // date
-            imagettftext($image, 18, 0, 880, 188, $color, $font, $date);
+
+
+            // imagettftext(image , size , angle , X , Y , colour , font-file , text)
+
+            // date 
+            imagettftext($image, 18, 0, 58, 167, $color, $common_font, $date);
             // name
-            imagettftext($image, 48, 0, 120, 520, $color, $font, $name);
+            imagettftext($image, 48, 0, 253, 224, $color, $name_font, $name);
+            // course name
+            imagettftext($image, 48, 0, 254, 300, $color, $common_font, $course_name);
 
             // certificate number
-            imagettftext($image, 48, 0, 880, 880, $color, $font, $certificate_id);
+            imagettftext($image, 48, 0, 880, 880, $color, $common_font, $certificate_id);
+            // certificate URL
+            imagettftext($image, 18, 0, 474, 395, $color, $common_font, $url);
 
             $certificate->certificate_id = $certificate_id;
 
@@ -98,7 +109,7 @@ class CertificateController extends Controller
 
 
                 $students_details = JoinedStudent::with(['getCourseNames'  => function ($query) {
-                    $query->select('id', 'course_name', 'course_code','small_description','course_description','course_syllabus');
+                    $query->select('id', 'course_name', 'course_code', 'small_description', 'course_description', 'course_syllabus');
                 }, 'getCourseBatches'])->where('enquired_id', '=', $certificate_details->student_id)->first();
 
 

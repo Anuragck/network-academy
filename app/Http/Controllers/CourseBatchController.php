@@ -43,9 +43,20 @@ if($request->id){
     }
 
 
-public function getBatches(){
+public function getBatches(Request $request){
 
-    return CourseBatch::orderBy('id', 'DESC')->get();
+
+
+    $batches=  CourseBatch::with('course')->orderBy('id', 'DESC');
+
+
+    if($request->course_name){
+
+        $batches->where('course_id',$request->course_name);
+    }
+
+ return $batches->paginate(5);
+
 
 
 }
