@@ -85,7 +85,7 @@
           :src="
             '/uploads/completion_certificates/' +
             certificate_details.certificate_id +
-            '.jpg'
+            '.png'
           "
           class="img-fluid"
           alt="Responsive image"

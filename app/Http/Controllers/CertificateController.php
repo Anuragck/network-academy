@@ -47,19 +47,20 @@ class CertificateController extends Controller
             header('Content-type: image/jpeg');
             $name_font = realpath('./uploads/certificate_templates/name.ttf');
             $common_font = realpath('./uploads/certificate_templates/name.ttf');
-            $image = imagecreatefromjpeg("./uploads/certificate_templates/Certificate.jpg");
+            $image = imagecreatefrompng("./uploads/certificate_templates/Certificate.png");
 
 
-            $color = imagecolorallocate($image, 255, 0, 0);
+            $name_color = imagecolorallocate($image, 25, 23, 116);
+            $common_color = imagecolorallocate($image, 88, 84, 81);
+            $date_color = imagecolorallocate($image, 119, 141, 183);
 
 
-            
             $date = date('d F, Y');
             $name = $request->student_name;
             $course_name = $request->get_course_names['course_name'];
             $student_id = $request->id;
             $course_code = $request->get_course_names['course_code'];
-            $certificate_id = $course_code . '-' . $student_id . '-' . $certificate_id;
+            $certificate_id =  $certificate_id;
 
             $path = "./uploads/completion_certificates/$certificate_id.jpg";
             $url = "http://network-academy.test/verify-certificate?certificate_id=$certificate_id";
@@ -69,24 +70,24 @@ class CertificateController extends Controller
             // imagettftext(image , size , angle , X , Y , colour , font-file , text)
 
             // date 
-            imagettftext($image, 18, 0, 58, 167, $color, $common_font, $date);
+            imagettftext($image, 22, 0, 308, 948,  $date_color, $common_font, $date);
             // name
-            imagettftext($image, 48, 0, 253, 224, $color, $name_font, $name);
+            imagettftext($image, 55, 0, 1524, 1296, $name_color, $name_font, $name);
             // course name
-            imagettftext($image, 48, 0, 254, 300, $color, $common_font, $course_name);
+            imagettftext($image, 55, 0, 1524, 1728, $common_color, $common_font, $course_name);
 
             // certificate number
-            imagettftext($image, 48, 0, 880, 880, $color, $common_font, $certificate_id);
+            imagettftext($image, 55, 0, 880, 880, $common_color, $common_font, $certificate_id);
             // certificate URL
-            imagettftext($image, 18, 0, 474, 395, $color, $common_font, $url);
+            imagettftext($image, 20, 0, 2712, 2290, $common_color, $common_font, $url);
 
             $certificate->certificate_id = $certificate_id;
 
             $certificate->certificate_path = $url;
             $certificate->course_id = $request->get_course_names['id'];;
             $certificate->save();
-            imagejpeg($image, $path);
-            // imagejpeg($image);
+            imagepng($image, $path);
+            // imagepng($image);
             imagedestroy($image);
 
 
