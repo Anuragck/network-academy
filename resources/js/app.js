@@ -42,7 +42,10 @@ Vue.use(Vue2Editor);
 
 // import ImageUploader from 'vue-image-upload-resize'
 // Vue.use(ImageUploader);
+//vue js social sharing
+import VueSocialSharing from 'vue-social-sharing'
 
+Vue.use(VueSocialSharing);
 
 
 //  vue pagination

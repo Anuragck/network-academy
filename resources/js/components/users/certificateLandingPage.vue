@@ -11,7 +11,16 @@
       </div>
     </section>
 
-
+<!-- <ShareNetwork
+    network="facebook"
+    :url="certificate_details.certificate_path"
+    title="title test"
+    description="test description"
+    quote="test"
+    hashtags="vuejs,vite"
+  >
+    Share on Facebook
+</ShareNetwork> -->
 
     <div class="row px-5 mb-5 pb-5">
       <div class="col-md-6">
@@ -93,7 +102,33 @@
           alt="Responsive image"
           width=""
         />
+<div class="pt-4 float-right">
+<a class="btn btn-sm btn-dark float-right rounded-pill" :href=" '/uploads/completion_certificates/' +
+            students_details.student_name+'-'+certificate_details.certificate_id +
+            '.png'" :download=" students_details.student_name+'-'+certificate_details.certificate_id">Download <i class="fas fa-cloud-download-alt fa-fw"></i></a>
+<div class="div pt-5">
+<h6 class="text-muted">Share your achievement on social media. </h6>
+
+ <ShareNetwork
+    v-for="network in networks"
+    :network="network.network"
+    :key="network.network"
+    :style="{color: network.color}"
+    :url="certificate_details.certificate_path"
+    :title="sharing.title"
+    :description="sharing.description"
+    :quote="sharing.quote"
+    :hashtags="sharing.hashtags"
+    :twitterUser="sharing.twitterUser"
+  >
+    <i :class="network.icon"></i>
+    <span>{{ network.name }}</span>
+  </ShareNetwork>
+</div>
+</div>
+
       </div>
+
     </div>
     <div
       class="modal fade"
@@ -120,7 +155,29 @@
 export default {
   props: ["certificate_details", "students_details"],
   data() {
-    return {};
+    return {
+ sharing: {
+
+        title: 'sharing title here.',
+        description: 'sharing description here.',
+        quote: 'sharing quote here',
+        hashtags: 'vuejs,vite,javascript',
+        twitterUser: 'youyuxi'
+      },
+  networks: [
+        { network: 'email', name: 'Email', icon: 'far fah fa-lg fa-envelope ml-3', color: '#FF5647', },
+        { network: 'facebook', name: 'Facebook', icon: 'fab fah fa-lg fa-facebook-f ml-3', color: '#3b5998'},
+        { network: 'linkedin', name: 'LinkedIn', icon: 'fab fah fa-lg fa-linkedin ml-3', color: '#094b6b' },
+
+        { network: 'pinterest', name: 'Pinterest', icon: 'fab fah fa-lg fa-pinterest ml-3', color: '#E60023' },
+        { network: 'telegram', name: 'Telegram', icon: 'fab fah fa-lg fa-telegram-plane ml-3', color: '#0088cc' },
+        { network: 'twitter', name: 'Twitter', icon: 'fab fah fa-lg fa-twitter ml-3', color: '#1DA1F2' },
+
+        { network: 'whatsapp', name: 'Whatsapp', icon: 'fab fah fa-lg fa-whatsapp ml-3', color: '#25D366' },
+
+
+      ]
+    };
   },
 
   created() {
