@@ -11,6 +11,8 @@
       </div>
     </section>
 
+
+
     <div class="row px-5 mb-5 pb-5">
       <div class="col-md-6">
         <div class="card mb-3 border-0 shadow-sm">
@@ -35,7 +37,7 @@
                 </p>
                 <p class="card-text">
                   <small class="text-muted">{{
-                    certificate_details.created_at | myDate
+                    certificate_details.course_completed_date | myDate
                   }}</small>
                 </p>
               </div>
@@ -84,7 +86,7 @@
         <img
           :src="
             '/uploads/completion_certificates/' +
-            certificate_details.certificate_id +
+            students_details.student_name+'-'+certificate_details.certificate_id +
             '.png'
           "
           class="img-fluid"

@@ -83,48 +83,48 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'preventB
 
     Route::post('/add-course', [CourseController::class, 'addCourse']);
     Route::get('/get-courses', [CourseController::class, 'getCourses']);
-     Route::get('/categories', [CourseController::class, 'Categories']);
+    Route::get('/categories', [CourseController::class, 'Categories']);
 
     Route::post('/add-category', [CourseCategoryController::class, 'addCategory']);
     Route::get('/get-category', [CourseCategoryController::class, 'getCategory']);
-     Route::get('/get-course-table-categories', [CourseCategoryController::class, 'getCategory']);
+    Route::get('/get-course-table-categories', [CourseCategoryController::class, 'getCategory']);
 
 
     Route::post('/add-batch', [CourseBatchController::class, 'addBatch']);
-     Route::get('/get-batches', [CourseBatchController::class, 'getBatches']);
-     Route::get('/get-batch-courses', [CourseBatchController::class, 'getBatchCourses']);
+    Route::get('/get-batches', [CourseBatchController::class, 'getBatches']);
+    Route::get('/get-batch-courses', [CourseBatchController::class, 'getBatchCourses']);
 
-     Route::get('/get-enquiries', [CourseEnquiryController::class, 'getEnquiry']);
+    Route::get('/get-enquiries', [CourseEnquiryController::class, 'getEnquiry']);
 
-     Route::post('/change-add-to-home-status', [CourseController::class, 'changeHomeStatus']);
+    Route::post('/change-add-to-home-status', [CourseController::class, 'changeHomeStatus']);
 
-     Route::post('/addCallEntries/{id}', [FollowUpController::class, 'addCall']);
+    Route::post('/addCallEntries/{id}', [FollowUpController::class, 'addCall']);
 
-     Route::get('/get-follow-up-history', [FollowUpController::class, 'getHistory']);
-
-
-     Route::get('/get-enquiry-courses-add-new-lead', [CourseEnquiryController::class, 'getEnquiryCoursesForNewLead']);
-     Route::get('/get-enquiry-batches-add-new-lead', [CourseEnquiryController::class, 'getEnquiryBatchesForNewLead']);
-
-     Route::post('/add-new-lead', [CourseEnquiryController::class, 'addNewLead']);
+    Route::get('/get-follow-up-history', [FollowUpController::class, 'getHistory']);
 
 
-     Route::post('add-conversion-status/{id}', [FollowUpController::class, 'addConversion']);
-     Route::get('getJoinedStudents', [JoinedStudentsController::class, 'joinedStudents']);
+    Route::get('/get-enquiry-courses-add-new-lead', [CourseEnquiryController::class, 'getEnquiryCoursesForNewLead']);
+    Route::get('/get-enquiry-batches-add-new-lead', [CourseEnquiryController::class, 'getEnquiryBatchesForNewLead']);
 
- Route::get('/get-filter-courses', [JoinedStudentsController::class, 'filterCourses']);
- Route::get('/get-filter-batches', [JoinedStudentsController::class, 'filterBatches']);
-
-
-     Route::post('/addPaymentEntry/{id}', [FeePaymentController::class, 'addPayment']);
-     Route::get('/get-payment-history', [FeePaymentController::class, 'getPaymentHistory']);
+    Route::post('/add-new-lead', [CourseEnquiryController::class, 'addNewLead']);
 
 
-     Route::get('/dropped-list', [DroppedListController::class, 'getDropped']);
+    Route::post('add-conversion-status/{id}', [FollowUpController::class, 'addConversion']);
+    Route::get('getJoinedStudents', [JoinedStudentsController::class, 'joinedStudents']);
 
- Route::post('/course-completed', [CertificateController::class, 'generateCertificate']);
+    Route::get('/get-filter-courses', [JoinedStudentsController::class, 'filterCourses']);
+    Route::get('/get-filter-batches', [JoinedStudentsController::class, 'filterBatches']);
 
- Route::get('/getCounts', [AdminDashboardCountController::class, 'getCountData']);
+
+    Route::post('/addPaymentEntry/{id}', [FeePaymentController::class, 'addPayment']);
+    Route::get('/get-payment-history', [FeePaymentController::class, 'getPaymentHistory']);
+
+
+    Route::get('/dropped-list', [DroppedListController::class, 'getDropped']);
+
+    Route::post('/course-completed', [CertificateController::class, 'generateCertificate']);
+
+    Route::get('/getCounts', [AdminDashboardCountController::class, 'getCountData']);
 });
 
 // user routes

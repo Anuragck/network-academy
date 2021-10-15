@@ -9,10 +9,11 @@
       <div class="card-header">
         <div class="row">
           <span class="h5 font-weight-bold float-right mt-4 pl-2 text-success"
-            >Joined Students List <small v-if="from_date =='' || from_date == todayDate "> ( Today Joined )</small></span
+            >Joined Students List
+            <small v-if="from_date == '' || from_date == todayDate">
+              ( Today Joined )</small
+            ></span
           >
-
-
 
           <div class="col-md-2 ml-auto">
             <div class="form-group">
@@ -159,15 +160,104 @@
                   </button>
 
                   <button
-                    @click="courseCompleted(joined)"
                     type="button"
                     class="btn btn-sm btn-dark rounded-pill ml-2 mt-1"
                     name=""
+                    data-toggle="modal"
+                    data-target="#completedDateModal"
                     title="Mark as course completed"
                   >
                     <i class="fa fa-graduation-cap"></i>
                   </button>
                 </td>
+
+                <!--course completed date select  Modal -->
+                <div
+                  class="modal fade"
+                  id="completedDateModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          {{ joined.student_name }}
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                          @click.prevent="clear_form_field()"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container">
+                          <form method="POST" enctype="multipart/form-data">
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label
+                                    for="call-entry-date"
+                                    class="text-muted font-weight-bold"
+                                    >Select Course Completed Date
+                                  </label>
+
+                                  <input
+                                    type="date"
+                                    class="
+                                      form-control
+                                      rounded-pill
+                                      shadow-sm
+                                      enqry-input-border
+                                    "
+                                    id="completed-date"
+                                    aria-describedby="emailHelp"
+                                    placeholder="Course Completed Date"
+                                    name="completed_date"
+                                    v-model="course_completed_date"
+                                  />
+                                </div>
+                                <small class="text-danger"> </small>
+                              </div>
+                            </div>
+
+                            <div class="text-center pt-4 pb-2">
+                              <button
+                                @click.prevent="courseCompleted(joined)"
+                                type="submit"
+                                class="
+                                  btn btn btn-outline-dark
+                                  rounded-pill
+                                  shadow
+                                "
+                                id="confirmDate"
+                                :disabled="btnLoading"
+                              >
+                                Confirm
+                                <i class="fas fa-angle-double-right fa-fw"></i>
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-sm rounded-pill"
+                          data-dismiss="modal"
+                          @click.prevent="clear_form_field()"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </tr>
 
               <tr v-if="record">
@@ -235,7 +325,9 @@ import moment from "moment";
 export default {
   data() {
     return {
-    todayDate: moment().format("YYYY-MM-DD"),
+      todayDate: moment().format("YYYY-MM-DD"),
+      course_completed_date: moment().format("YYYY-MM-DD"),
+
       joinedStudents: {},
       course_list: {},
       batches_list: {},
@@ -250,6 +342,7 @@ export default {
       batch_time: "",
 
       loading: false,
+      btnLoading: false,
     };
   },
 
@@ -261,9 +354,11 @@ export default {
     bus.$on("AfterActionJoined", () => {
       this.getJoined();
     });
-
   },
   methods: {
+    clear_form_field() {
+      this.course_completed_date = moment().format("YYYY-MM-DD");
+    },
     addFeePayment(joined) {
       // this.joined_id=joined.enquired_id;
       bus.$emit("joined_details", joined);
@@ -296,31 +391,32 @@ export default {
     },
 
     courseCompleted(joined) {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "Mark as Course Completed !",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, confirm it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          axios.post("admin/course-completed", joined).then((response) => {
-            if (response.data == "success") {
-              Toast.fire({
-                icon: "success",
-                title: " completed successfully",
-              });
-            }
+      let data = {
+        enquired_id: joined.enquired_id,
+        course_name: joined.get_course_names.course_name,
+        course_id: joined.get_course_names.id,
+        student_name: joined.student_name,
+        completedDate: this.course_completed_date,
+      };
 
-            if (response.data == "existing-user") {
-              Toast.fire({
-                icon: "error",
-                title: "Already Completed",
-              });
-            }
+      axios.post("admin/course-completed", data).then((response) => {
+        this.btnLoading = true;
+
+        if (response.data == "success") {
+          Toast.fire({
+            icon: "success",
+            title: " completed successfully",
           });
+          this.btnLoading = false;
+
+        }
+
+        if (response.data == "existing-user") {
+          Toast.fire({
+            icon: "error",
+            title: "Already Completed",
+          });
+          this.btnLoading = false;
         }
       });
     },

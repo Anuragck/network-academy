@@ -19,6 +19,7 @@ class CreateCertificatesTable extends Migration
             $table->bigInteger('student_id')->unsigned();
             $table->bigInteger('course_id');
             $table->string('certificate_id');
+            $table->string('course_completed_date')->nullable();
             $table->string('certificate_path');
 
             $table->timestamps();

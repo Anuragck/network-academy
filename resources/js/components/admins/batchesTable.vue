@@ -28,19 +28,52 @@
 
     <div class="card mt-3 shadow" v-else>
       <div class="card-header">
-        <button
-          type="button"
-          class="btn btn btn-sm-block btn-dark rounded-pill float-right shadow"
-          data-toggle="modal"
-          data-target="#batches-modal"
-        >
-          Add batches <i class="fas fa-plus-circle fa-fw"></i>
-        </button>
 
-        <span class="h5 font-weight-bold">Course batches List</span>
-      </div>
 
-      
+            <span class="h5 font-weight-bold">Course batches List</span>
+
+
+
+
+
+
+            <button
+              type="button"
+              class="
+                btn btn btn-sm-block btn-dark
+                rounded-pill
+ float-right
+                shadow
+              "
+              data-toggle="modal"
+              data-target="#batches-modal"
+            >
+              Add batches <i class="fas fa-plus-circle fa-fw"></i>
+            </button>
+          </div>
+
+
+ <div class="col-md-2 ml-auto mt-3">
+            <div class="form-group ">
+
+              <select
+                class="form-control item shadow-sm rounded-pill "
+                name="filter-course_name"
+                v-model="course_name"
+              >
+              <option value selected disabled="" class="pb-3">Course Wise Filter</option>
+                <option value="" class="pb-3">All</option>
+                <option
+                  v-for="course in course_list"
+                  :key="course.id"
+                  :value="course.id"
+                >
+                  {{ course.course_name }}
+                </option>
+              </select>
+            </div>
+  </div>
+
       <div class="card-body">
         <div class="table-responsive">
           <table class="table">
@@ -55,7 +88,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(batches, index) in batches_list.data" :key="batches.id">
+              <tr
+                v-for="(batches, index) in batches_list.data"
+                :key="batches.id"
+              >
                 <th scope="row">{{ index + 1 }}</th>
                 <td>{{ batches.course.course_name }}</td>
                 <td>{{ batches.batch_starting_date | myDate }}</td>
@@ -141,13 +177,13 @@ export default {
   },
 
   methods: {
-    getBatches(page =1 ) {
+    getBatches(page = 1) {
       this.loading = true; //the loading begin
       axios
-        .get("/admin/get-batches?page="+page,{
-          params:{
-            course_name:this.course_name,
-          }
+        .get("/admin/get-batches?page=" + page, {
+          params: {
+            course_name: this.course_name,
+          },
         })
         .then((response) => {
           this.batches_list = response.data;
