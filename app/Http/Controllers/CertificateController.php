@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CertificateGenerated;
 use Illuminate\Http\Request;
 use App\Models\Certificate;
 use App\Models\JoinedStudent;
 use PhpParser\Node\Expr\New_;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+
 class CertificateController extends Controller
 {
     public function generateCertificate(Request $request)
@@ -126,6 +129,23 @@ class CertificateController extends Controller
             imagedestroy($image);
 
 
+
+            // send mail
+
+            $certificate_details=[
+
+
+                'name'=> $name,
+                'link'=> $url,
+                'message'=>'Happy Learning' ,
+    
+    
+            ];
+    
+            Mail::to('test@gmail.com')->send(new CertificateGenerated($certificate_details));
+          
+
+
             return 'success';
         }
     }
@@ -156,4 +176,11 @@ class CertificateController extends Controller
             }
         }
     }
+
+
+
+
+
+
+
 }

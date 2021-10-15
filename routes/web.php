@@ -125,6 +125,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'preventB
     Route::post('/course-completed', [CertificateController::class, 'generateCertificate']);
 
     Route::get('/getCounts', [AdminDashboardCountController::class, 'getCountData']);
+
+
+
+    
+
+
 });
 
 // user routes
