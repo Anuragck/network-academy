@@ -47,6 +47,8 @@ Route::get('/verify-certificate-page', [UserPagesController::class, 'verifyCerti
 Route::get('/verify-certificate', [CertificateController::class, 'verifyCertificate']);
 
 
+
+
 Route::get('/courseView/{id}', [UserPagesController::class, 'courseMain']);
 
 Route::get('/index-page-courses', [CourseController::class, 'getIndexPageCourses']);
@@ -128,7 +130,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'preventB
 
 
 
-    
+
 
 
 });

@@ -5,25 +5,25 @@ Fixed Navigation
 
     <form action="" method="GET">
 
-    <div class="container-fluid px-3">
-        <!-- main nav -->
-        <nav class="navbar navbar-expand-lg navbar-light  " id="">
-            <!-- logo -->
-            <a class="navbar-brand logo" href="/">
-                <img class="logo-default" src="/images/logo-final.png" alt="logo" style="width: 60%;" />
-                <img class="logo-white" src="/images/logo-final.png" alt="logo" style="width: 70%;" />
-            </a>
-            <!-- /logo -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-                aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="container-fluid px-3">
+            <!-- main nav -->
+            <nav class="navbar navbar-expand-lg navbar-light  " id="">
+                <!-- logo -->
+                <a class="navbar-brand logo" href="/">
+                    <img class="logo-default" src="/images/logo-final.png" alt="logo" style="width: 60%;" />
+                    <img class="logo-white" src="/images/logo-final.png" alt="logo" style="width: 70%;" />
+                </a>
+                <!-- /logo -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                    aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <div class="collapse navbar-collapse " id="navigation">
 
 
 
-                    <div class="home-search-bar">
+                    {{-- <div class="home-search-bar">
                         <div class="input-group w-100 mt-2 ">
                             <input class="form-control py-2 rounded-pill mr-1 " type="search"
                                 placeholder="search for courses" name="query" id="query">
@@ -33,7 +33,9 @@ Fixed Navigation
                                 </button>
                             </span>
                         </div>
-                    </div>
+                    </div> --}}
+                    <search-courses></search-courses>
+
 
 
                     <ul class="navbar-nav me-auto ml-auto font-weight-bold ">
@@ -54,10 +56,12 @@ Fixed Navigation
 
                     </ul>
                 </div>
-        </nav>
-        <!-- /main nav -->
-    </div>
-</form>
+            </nav>
+            <!-- /main nav -->
+
+
+        </div>
+    </form>
 </header>
 <!--
   End Fixed Navigation

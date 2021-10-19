@@ -17,6 +17,9 @@ class UserPagesController extends Controller
     }
 
     public function about(){
+
+
+
         return view('users.about');
     }
 

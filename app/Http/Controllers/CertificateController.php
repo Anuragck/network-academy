@@ -138,12 +138,12 @@ class CertificateController extends Controller
                 'name'=> $name,
                 'link'=> $url,
                 'message'=>'Happy Learning' ,
-    
-    
+
+
             ];
-    
-            Mail::to('test@gmail.com')->send(new CertificateGenerated($certificate_details));
-          
+
+            Mail::to('anuragck2@gmail.com')->send(new CertificateGenerated($certificate_details));
+
 
 
             return 'success';

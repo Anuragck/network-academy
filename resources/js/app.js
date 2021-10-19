@@ -122,6 +122,9 @@ Vue.component('the-loading', require('./components/admins/loading.vue').default 
 Vue.component('certificate-landing-page', require('./components/users/certificateLandingPage.vue').default);
 
 
+Vue.component('search-courses', require('./components/users/search.vue').default);
+
+
 
 const app = new Vue({
     el: '#app',

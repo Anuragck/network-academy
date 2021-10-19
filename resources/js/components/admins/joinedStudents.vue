@@ -189,8 +189,10 @@
                           type="button"
                           class="close"
                           data-dismiss="modal"
+                          ref="close_date_select_modal"
                           aria-label="Close"
                           @click.prevent="clear_form_field()"
+
                         >
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -403,20 +405,26 @@ export default {
         this.btnLoading = true;
 
         if (response.data == "success") {
+ this.$refs.close_date_select_modal.click();
           Toast.fire({
             icon: "success",
             title: " completed successfully",
           });
+
+
           this.btnLoading = false;
 
         }
 
         if (response.data == "existing-user") {
+
           Toast.fire({
             icon: "error",
             title: "Already Completed",
           });
+ this.$refs.close_date_select_modal.click();
           this.btnLoading = false;
+
         }
       });
     },
