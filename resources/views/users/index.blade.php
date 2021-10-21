@@ -5,8 +5,6 @@
 
 
 
-
-
     <!--
         Welcome Slider
         ==================================== -->
@@ -203,8 +201,8 @@ aria-hidden="true"
 
 
 
-
-{{-- @foreach($testimonials as $testimonial)
+{{--
+ @foreach($testimonials as $testimonial)
 <div class="item text-center">
     <i class="tf-ion-chatbubbles"></i>
     <!-- client info -->
@@ -217,7 +215,7 @@ aria-hidden="true"
       <img
         src={{
           '/uploads/testimonials_images/'.$testimonial['testimonial_image'] }}
-        
+
         class="img-fluid"
         alt="testimonial image"
       />
@@ -230,13 +228,13 @@ aria-hidden="true"
   </div>
 
 
-  @endforeach    --}}
+  @endforeach --}}
 
 
 
-                   
 
-                </div> 
+
+                </div>
 
 
             </div> 		<!-- end col lg 12 -->
