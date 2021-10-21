@@ -106,6 +106,7 @@ Vue.component('batches-page', require('./components/admins/batches.vue').default
 
 Vue.component('user-index-courses', require('./components/users/indexCoursePage.vue').default);
 Vue.component('user-index-categories', require('./components/users/indexCategoryPage.vue').default);
+Vue.component('user-index-testimonials', require('./components/users/indexTestimonials.vue').default);
 
 Vue.component('user-main-courses', require('./components/users/mainCoursePage.vue').default);
 Vue.component('user-single-courses', require('./components/users/singleCoursePage.vue').default);

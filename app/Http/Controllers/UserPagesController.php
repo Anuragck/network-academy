@@ -6,14 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\CourseBatch;
+use App\Models\Testimonial;
 
 class UserPagesController extends Controller
 {
     public function index(){
 
+$testimonials= Testimonial::all();
+
+        return view('users.index',compact('testimonials'));
 
 
-        return view('users.index');
+
     }
 
     public function about(){
