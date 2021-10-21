@@ -23,7 +23,7 @@
                     </p> --}}
                         <ul class="list-inline wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".7s">
                             <li class="list-inline-item">
-                                <a data-scroll href="#service-2" class="btn btn-main">Explore Us</a>
+                                <a data-scroll href="#why-network-academy" class="btn btn-main">Explore Us</a>
                             </li>
                             <li class="list-inline-item">
                                 <a data-scroll a href="tel:+91 9747 51 2223"
@@ -87,7 +87,7 @@ aria-hidden="true"
     <!--
         Start About Section
         ==================================== -->
-    <section class="service-2 section">
+    <section class="service-2 section" id="why-network-academy">
         <div class="container">
             <div class="row">
 

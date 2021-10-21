@@ -13,7 +13,7 @@
 
                 <li><a href='/terms'>Terms</a></li>
                 <li><a href="/privacy-policy">Privacy Policy</a></li>
-                <li><a href="#">Sitemap</a></li>
+                <li><a href="/site-map">Sitemap</a></li>
               </ul>
 
           </div>

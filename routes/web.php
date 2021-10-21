@@ -44,6 +44,8 @@ Route::get('/contact', [UserPagesController::class, 'contact']);
 Route::get('/terms', [UserPagesController::class, 'terms']);
 Route::get('/privacy-policy', [UserPagesController::class, 'privacy']);
 
+Route::get('/site-map', [UserPagesController::class, 'sitemap']);
+
 Route::get('/verify-certificate-page', [UserPagesController::class, 'verifyCertificatePage']);
 Route::get('/verify-certificate', [CertificateController::class, 'verifyCertificate']);
 

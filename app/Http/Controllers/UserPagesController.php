@@ -83,4 +83,8 @@ $category_list=CourseCategory::orderBy('id', 'DESC')->get();
     public function privacy(){
         return view('users.privacyPolicy');
     }
+
+    public function sitemap(){
+        return view('users.sitemap');
+    }
 }

@@ -109,17 +109,20 @@
 <div class="div pt-5">
 <h6 class="text-muted">Share your achievement on social media. </h6>
 
- <ShareNetwork
+
+
+  <ShareNetwork
     v-for="network in networks"
     :network="network.network"
     :key="network.network"
     :style="{color: network.color}"
     :url="certificate_details.certificate_path"
-    :title="sharing.title"
+     :title="sharing.title"
     :description="sharing.description"
     :quote="sharing.quote"
     :hashtags="sharing.hashtags"
     :twitterUser="sharing.twitterUser"
+
   >
     <i :class="network.icon"></i>
     <span>{{ network.name }}</span>
@@ -153,9 +156,11 @@
 </template>
 <script>
 export default {
+
   props: ["certificate_details", "students_details"],
   data() {
     return {
+
  sharing: {
 
         title: 'sharing title here.',
@@ -181,9 +186,12 @@ export default {
   },
 
   created() {
-    console.log(this.students_details);
+    // console.log(this.students_details);
   },
 
   methods: {},
+
+
 };
+
 </script>

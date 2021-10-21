@@ -142,7 +142,7 @@ class CertificateController extends Controller
 
             ];
 
-            Mail::to('anuragck2@gmail.com')->send(new CertificateGenerated($certificate_details));
+            Mail::to('niyasn.00009@gmail.com')->send(new CertificateGenerated($certificate_details));
 
 
 

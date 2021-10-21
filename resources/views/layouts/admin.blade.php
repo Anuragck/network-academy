@@ -9,7 +9,7 @@
 
     <nav id="sidebar" class=" sidebar-bg">
         <div class="sidebar-header">
-            <h6 class="pt-3 ml-2">Network Academy </h6>
+           <a href="/" target="_blank"> <h6 class="pt-3 ml-2" style="color:#fff">Network Academy </h6></a>
         </div>
 
         <navigation-page> </navigation-page>

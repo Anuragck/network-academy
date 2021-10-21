@@ -48,6 +48,7 @@ import VueSocialSharing from 'vue-social-sharing'
 Vue.use(VueSocialSharing);
 
 
+
 //  vue pagination
 Vue.component('pagination', require('laravel-vue-pagination'));
 
@@ -126,7 +127,6 @@ Vue.component('certificate-landing-page', require('./components/users/certificat
 
 Vue.component('search-courses', require('./components/users/search.vue').default);
 Vue.component('add-testimonial', require('./components/admins/addTestimonial.vue').default );
-
 
 
 const app = new Vue({
