@@ -67,6 +67,8 @@ const routes = [
     { path: '/enquiry-table', component: require('./components/admins/enquiriesTable.vue').default },
     { path: '/joined-students', component: require('./components/admins/joinedStudents.vue').default },
     { path: '/dropped-list', component: require('./components/admins/droppedList.vue').default },
+    { path: '/testimonial-table', component: require('./components/admins/testimonialsTable.vue').default },
+    { path: '/placements-table', component: require('./components/admins/placementsTable.vue').default },
 
 //   { path: '/enquiry-test', component: require('./components/enquiryTest.vue').default },
 
@@ -123,6 +125,7 @@ Vue.component('certificate-landing-page', require('./components/users/certificat
 
 
 Vue.component('search-courses', require('./components/users/search.vue').default);
+Vue.component('add-testimonial', require('./components/admins/addTestimonial.vue').default );
 
 
 

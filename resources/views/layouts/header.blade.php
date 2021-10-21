@@ -31,8 +31,8 @@
   <link rel="stylesheet" href="{{ asset('plugins/animate/animate.css') }}">
   <!-- Slick Carousel -->
   <link rel="stylesheet" href="{{ asset('plugins/slick/slick.css') }}">
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
   {{-- <!-- vue css -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}

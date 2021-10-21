@@ -88,12 +88,14 @@
   /* =========================================================================  */
 
   //Init the slider
+  $(document).on('ready', function () {
   $('.testimonial-slider').slick({
     infinite: true,
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 2000
+    autoplaySpeed: 3000
   });
+  })
 
 
   /* ========================================================================= */

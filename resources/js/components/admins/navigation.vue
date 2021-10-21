@@ -60,8 +60,14 @@
 
 
       <li>
-        <router-link to="charts.html"
+        <router-link to="/testimonial-table"
           ><i class="fas fa-user-graduate"></i>Testimonials Add</router-link
+        >
+      </li>
+
+ <li>
+        <router-link to="/placements-table"
+          ><i class="fas fa-user-graduate"></i>Placements Add</router-link
         >
       </li>
     </ul>

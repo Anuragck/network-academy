@@ -188,152 +188,81 @@ aria-hidden="true"
 
 
 
-    <!--
-          Start Counter Section
-          ==================================== -->
+<!-- Start Testimonial
+=========================================== -->
 
-    <!-- Start Testimonial
-        =========================================== -->
-
-    <section class="testimonial section" id="testimonial">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- testimonial wrapper -->
-                    <div class="testimonial-slider">
-                        <!-- testimonial single -->
-                        <div class="item text-center">
-                            <i class="tf-ion-chatbubbles"></i>
-                            <!-- client info -->
-                            <div class="client-details">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos
-                                    earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates
-                                    alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
-                            </div>
-                            <!-- /client info -->
-                            <!-- client photo -->
-                            <div class="client-thumb">
-                                <img src="images/client-logo/clients-1.jpg" class="img-fluid" alt="">
-                            </div>
-                            <div class="client-meta">
-                                <h3>William Martin</h3>
-                                <span>CEO , Company Name</span>
-                            </div>
-                            <!-- /client photo -->
+<section class="testimonial section" id="testimonial">
+    <div class="container ">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- testimonial wrapper -->
+                <div class="testimonial-slider">
+                    <!-- testimonial single -->
+                    <div class="item text-center">
+                        <i class="tf-ion-chatbubbles"></i>
+                        <!-- client info -->
+                        <div class="client-details">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
                         </div>
-                        <!-- /testimonial single -->
-
-                        <!-- testimonial single -->
-                        <div class="item text-center">
-                            <i class="tf-ion-chatbubbles"></i>
-                            <!-- client info -->
-                            <div class="client-details">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos
-                                    earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates
-                                    alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
-                            </div>
-                            <!-- /client info -->
-                            <!-- client photo -->
-                            <div class="client-thumb">
-                                <img src="images/client-logo/clients-2.jpg" class="img-fluid" alt="">
-                            </div>
-                            <div class="client-meta">
-                                <h3>Emma Harrison</h3>
-                                <span>CEO , Company Name</span>
-                            </div>
-                            <!-- /client photo -->
+                        <!-- /client info -->
+                        <!-- client photo -->
+                        <div class="client-thumb">
+                            <img src="images/client-logo/clients-1.jpg" class="img-fluid" alt="">
                         </div>
-                        <!-- /testimonial single -->
-
-                        <!-- testimonial single -->
-                        <div class="item text-center">
-                            <i class="tf-ion-chatbubbles"></i>
-                            <!-- client info -->
-                            <div class="client-details">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos
-                                    earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates
-                                    alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
-                            </div>
-                            <!-- /client info -->
-                            <!-- client photo -->
-                            <div class="client-thumb">
-                                <img src="images/client-logo/clients-3.jpg" class="img-fluid" alt="">
-                            </div>
-                            <div class="client-meta">
-                                <h3>Alexander Lucas</h3>
-                                <span>CEO , Company Name</span>
-                            </div>
-                            <!-- /client photo -->
+                        <div class="client-meta">
+                            <h3>William Martin</h3>
+                            <span>CEO , Company Name</span>
                         </div>
-                        <!-- /testimonial single -->
+                        <!-- /client photo -->
                     </div>
-                </div> <!-- end col lg 12 -->
-            </div> <!-- End row -->
-        </div> <!-- End container -->
-    </section> <!-- End Section -->
+                    <!-- /testimonial single -->
 
+                    <!-- testimonial single -->
+                    <div class="item text-center">
+                        <i class="tf-ion-chatbubbles"></i>
+                        <!-- client info -->
+                        <div class="client-details">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
+                        </div>
+                        <!-- /client info -->
+                        <!-- client photo -->
+                        <div class="client-thumb">
+                            <img src="images/client-logo/clients-2.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="client-meta">
+                            <h3>Emma Harrison</h3>
+                            <span>CEO , Company Name</span>
+                        </div>
+                        <!-- /client photo -->
+                    </div>
+                    <!-- /testimonial single -->
 
-    <!-- Page Content -->
-    {{-- <hr> --}}
-    {{-- <div class="container">
-    <div class="title text-center pt-5  ">
-        <h2>Placements</h2>
-        <div class="border"></div>
-    </div>
-    <div class="row pt-2">
+                    <!-- testimonial single -->
+                    <div class="item text-center">
+                        <i class="tf-ion-chatbubbles"></i>
+                        <!-- client info -->
+                        <div class="client-details">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
+                        </div>
+                        <!-- /client info -->
+                        <!-- client photo -->
+                        <div class="client-thumb">
+                            <img src="images/client-logo/clients-3.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="client-meta">
+                            <h3>Alexander Lucas</h3>
+                            <span>CEO , Company Name</span>
+                        </div>
+                        <!-- /client photo -->
+                    </div>
+                    <!-- /testimonial single -->
+                </div>
+            </div> 		<!-- end col lg 12 -->
+        </div>	    <!-- End row -->
+    </div>       <!-- End container -->
+</section>    <!-- End Section -->
 
-      <!-- Team Member 1 -->
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow">
-          <img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">
-          <div class="card-body text-center" style="min-height: 200px">
-            <h5 class="card-title mb-0">Team Member</h5>
-            <div class="card-text text-black-50">Web Developer</div>
-            <div class="card-text text-black-50">Web Developer</div>
-          </div>
-        </div>
-      </div>
-      <!-- Team Member 2 -->
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow">
-          <img src="https://source.unsplash.com/9UVmlIb0wJU/500x350" class="card-img-top" alt="...">
-          <div class="card-body text-center" style="min-height: 200px">
-            <h5 class="card-title mb-0">Team Member</h5>
-            <div class="card-text text-black-50">Web Developer</div>
-            <div class="card-text text-black-50">Web Developer</div>
-          </div>
-        </div>
-      </div>
-      <!-- Team Member 3 -->
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow">
-          <img src="https://source.unsplash.com/sNut2MqSmds/500x350" class="card-img-top" alt="...">
-          <div class="card-body text-center" style="min-height: 200px">
-            <h5 class="card-title mb-0">Team Member</h5>
-            <div class="card-text text-black-50"><p class="text-justify">Web developer at tcsWeb developer at tcsWeb developer at tcsWeb developer at tcs salary 2.5 lc per annum</p></div>
-          </div>
-        </div>
-      </div>
-      <!-- Team Member 4 -->
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow">
-          <img src="https://source.unsplash.com/7u5mwbu7qLg/500x350" class="card-img-top" alt="...">
-          <div class="card-body text-center" style="min-height: 200px">
-            <h5 class="card-title mb-0">Team Member</h5>
-            <div class="card-text text-black-50">Web Developer</div>
-  <div class="card-text text-black-50">Web Developer</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /.row --> --}}
-
-    <!--
-          Start Blog Section
-          =========================================== -->
+    <!-- End testimonials Section -->
 
 
 

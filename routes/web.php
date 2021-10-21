@@ -17,6 +17,7 @@ use App\Http\Controllers\FollowUpController;
 use App\Http\Controllers\JoinedStudentsController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\preventBackHistory;
 use Illuminate\Support\Facades\Auth;
@@ -130,8 +131,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'preventB
 
 
 
+    Route::post('/add-testimonials', [TestimonialsController::class, 'addTestimonial']);
+    Route::get('/get-testimonials', [TestimonialsController::class, 'getTestmonial']);
 
-
+    Route::post('/delete-testimonials', [TestimonialsController::class, 'deleteTestimonial']);
 
 });
 

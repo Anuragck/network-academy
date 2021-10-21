@@ -86,6 +86,7 @@
       <!-- Google Map -->
 
 
+
       <!-- Form Validation -->
       <script src="{{ asset('plugins/form-validation/jquery.form.js') }}"></script>
       <script src="{{ asset('plugins/form-validation/jquery.validate.min.js') }}"></script>
@@ -106,6 +107,7 @@
 
 <!-- Custom js -->
 <script src="{{ asset('js/script.js') }}"></script>
+
 <script src="{{ mix('/js/app.js') }}"></script>
 
 

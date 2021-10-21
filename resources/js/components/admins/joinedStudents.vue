@@ -172,6 +172,7 @@
                 </td>
 
                 <!--course completed date select  Modal -->
+
                 <div
                   class="modal fade"
                   id="completedDateModal"
@@ -186,10 +187,11 @@
                           {{ joined.student_name }}
                         </h5>
                         <button
+                            ref="close_date_select_modal"
                           type="button"
                           class="close"
                           data-dismiss="modal"
-                          ref="close_date_select_modal"
+
                           aria-label="Close"
                           @click.prevent="clear_form_field()"
 
@@ -198,7 +200,11 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        <div class="container">
+
+<!-- <div v-if="testLoad">
+
+</div> -->
+                 <div class="container">
                           <form method="POST" enctype="multipart/form-data">
                             <div class="row">
                               <div class="col">
@@ -228,6 +234,8 @@
                               </div>
                             </div>
 
+
+
                             <div class="text-center pt-4 pb-2">
                               <button
                                 @click.prevent="courseCompleted(joined)"
@@ -246,6 +254,11 @@
                             </div>
                           </form>
                         </div>
+
+
+
+
+
                       </div>
                       <div class="modal-footer">
                         <button
@@ -345,6 +358,8 @@ export default {
 
       loading: false,
       btnLoading: false,
+
+testLoad:false,
     };
   },
 
@@ -393,6 +408,8 @@ export default {
     },
 
     courseCompleted(joined) {
+this.testLoad=true;
+
       let data = {
         enquired_id: joined.enquired_id,
         course_name: joined.get_course_names.course_name,
@@ -405,25 +422,30 @@ export default {
         this.btnLoading = true;
 
         if (response.data == "success") {
- this.$refs.close_date_select_modal.click();
+
+
+            this.btnLoading = false;
+$('#completedDateModal').modal('hide');
           Toast.fire({
             icon: "success",
             title: " completed successfully",
           });
+this.testLoad=false;
 
 
-          this.btnLoading = false;
+
 
         }
 
         if (response.data == "existing-user") {
-
+this.testLoad=false;
+this.btnLoading = false;
+$('#completedDateModal').modal('hide');
           Toast.fire({
             icon: "error",
             title: "Already Completed",
           });
- this.$refs.close_date_select_modal.click();
-          this.btnLoading = false;
+
 
         }
       });
@@ -470,5 +492,8 @@ export default {
 </script>
 
 <style scoped>
+
 </style>
+
+
 

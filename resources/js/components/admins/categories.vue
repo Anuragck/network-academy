@@ -110,6 +110,7 @@ export default {
   },
   mounted() {},
   created() {
+
     if (this.edit) {
       var vm = this;
       vm.title = "Edit Category";
