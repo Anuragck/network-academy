@@ -29,7 +29,7 @@
             <div class="col-md-4 text-center">
               <img
                 src="/images/certificate-section/verified.png"
-                class="img-fluid pt-5"
+                class="img-fluid pt-5 pb-2"
                 alt="..."
                 width="100px"
               />
