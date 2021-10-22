@@ -15,7 +15,7 @@ public function addTestimonial(Request $request){
         $request->validate([
             "testimonial_name"  => 'required',
             'designation'=>'required',
-            'testimonial_image'=>'required',
+            'testimonial_image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:width=500,height=500',
             'description'=>'required',
         ]);
 

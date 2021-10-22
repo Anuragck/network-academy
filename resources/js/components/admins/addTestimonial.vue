@@ -130,6 +130,13 @@
                         v-if="errors.testimonial_image"
                         >{{ errors.testimonial_image[0] }}</small
                       >
+
+                       <small
+                        class="text-danger"
+                        v-if="testimonial_image_error != ''"
+                      >
+                        {{ testimonial_image_error }}</small
+                      >
                     </div>
                   </div>
                 </div>
@@ -170,6 +177,7 @@
                       type="submit"
                       class="btn btn btn-dark rounded-pill shadow mt-2"
                       name=""
+                      :disabled="isloading"
                     >
                       Add Testimonials
                     </button>
@@ -208,8 +216,10 @@ export default {
         designation: "",
         description: "",
       },
+      testimonial_image_error:'',
       errors: {},
       loading: false,
+        isloading: false,
     };
   },
   created() {
@@ -238,7 +248,49 @@ _this.totalcharacter=testmonial.description.length;
       this.totalcharacter = this.testimonials.description.length;
     },
     testimonialImage(e) {
-      this.testimonials.testimonial_image = e.target.files[0];
+
+
+
+
+       var vm = this;
+       vm.isloading = true;
+      vm.testimonial_image_error = "";
+      var reader = new FileReader();
+
+      //Read the contents of Image File.
+      reader.readAsDataURL(e.target.files[0]);
+
+      // size validation
+
+      if (e.target.files[0].size >= 4380793) {
+        vm.testimonial_image_error = "Size must not exceed 4.13 MB.";
+        return false;
+      }
+
+      reader.onload = function (ev) {
+        //Initiate the JavaScript Image object.
+        var image = new Image();
+
+        //Set the Base64 string return from FileReader as source.
+        image.src = ev.target.result;
+
+        //Validate the File Height and Width.
+        image.onload = function () {
+          var height = this.height;
+          var width = this.width;
+          if (height > 7600 || width > 7600) {
+            vm.testimonial_image_error =
+              "Height and Width must not exceed 100px.";
+
+            return false;
+          } else {
+            vm.testimonials.testimonial_image = e.target.files[0];
+          }
+        };
+      };
+
+      vm.isloading = false;
+      
     },
 
     addTestimonial() {

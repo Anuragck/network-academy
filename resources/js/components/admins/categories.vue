@@ -9,7 +9,7 @@
         class="close"
         data-dismiss="modal"
         aria-label="Close"
-@click="clear_form_field()"
+        @click="clear_form_field()"
       >
         <span aria-hidden="true">&times;</span>
       </button>
@@ -33,46 +33,72 @@
 
                 <div class="row">
                   <div class="col">
-                   <div class="form-group">
+                    <div class="form-group">
+                      <label
+                        for="course-category-name"
+                        class="text-muted font-weight-bold"
+                        >Enter Course Category Name</label
+                      >
+                      <input
+                        id="category_name"
+                        type="text"
+                        placeholder="Enter Course Category Name"
+                        class="form-control item shadow-sm"
+                        name="category_name"
+                        v-model="category.category_name"
+                        required
+                        autocomplete="username"
+                        autofocus
+                      />
 
-<label for="course-category-name" class="text-muted font-weight-bold">Enter Course Category Name</label>
-                                <input id="category_name" type="text" placeholder="Enter Course Category Name" class="form-control item shadow-sm" name="category_name"  v-model="category.category_name" required autocomplete="username" autofocus>
+                      <small class="text-danger" v-if="errors.category_name">
+                        {{ errors.category_name[0] }}</small
+                      >
+                    </div>
 
-                              <small class="text-danger" v-if="errors.category_name">
-                    {{ errors.category_name[0] }}</small>
-                            </div>
+                    <div class="form-group">
+                      <label
+                        for="course-category-img"
+                        class="text-muted font-weight-bold"
+                        >Course Category Image</label
+                      >
+                      <input
+                        type="file"
+                        class="form-control shadow-sm pb-3"
+                        id="category_image"
+                        name="category_image"
+                        placeholder="category_image"
+                        ref="category_image"
+                        accept="image/*"
+                        @change="categoryImage($event)"
+                        style="border-radius: 25px 25px 25px 25px; width: 100%"
+                      />
 
-                   <div class="form-group ">
-
-<label for="course-category-img" class="text-muted font-weight-bold">Course Category Image</label>
-                    <input
-                      type="file"
-                      class="form-control shadow-sm pb-3"
-                      id="category_image"
-                      name="category_image"
-                      placeholder="category_image"
-                      ref="category_image"
-                      accept="image/*"
-
-                      @change="categoryImage($event)"
-                    style=" border-radius: 25px 25px 25px 25px; width:100% ;"/>
-
-
-                  <small class="text-danger" v-if="errors.category_image">
-                    {{ errors.category_image[0] }}</small
-                  >
-                </div>
+                      <small class="text-danger" v-if="errors.category_image">
+                        {{ errors.category_image[0] }}</small
+                      >
+                      <small
+                        class="text-danger"
+                        v-if="category_image_error != ''"
+                      >
+                        {{ category_image_error }}</small
+                      >
+                    </div>
 
                     <div class="border-top text-center">
                       <div class="card-body text-end">
-                       <button
-                      type="submit"
-                      class="btn btn btn-sm-block btn-dark rounded-pill shadow"
-                      name="arrivalsave"
-                      :disabled="isloading"
-                    >
-                      Save
-                    </button>
+                        <button
+                          type="submit"
+                          class="
+                            btn btn btn-sm-block btn-dark
+                            rounded-pill
+                            shadow
+                          "
+                          name="arrivalsave"
+                          :disabled="isloading"
+                        >
+                          Save
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -104,13 +130,12 @@ export default {
 
         category_image: "",
       },
-
+      category_image_error: "",
       errors: {},
     };
   },
   mounted() {},
   created() {
-
     if (this.edit) {
       var vm = this;
       vm.title = "Edit Category";
@@ -144,10 +169,10 @@ export default {
           this.$refs.category_image.value = "";
 
           bus.$emit("category-added");
-            Toast.fire({
-            icon: 'success',
-            title: 'Category Added successfully'
-            })
+          Toast.fire({
+            icon: "success",
+            title: "Category Added successfully",
+          });
           this.isloading = false;
         })
         .catch((error) => {
@@ -158,7 +183,42 @@ export default {
     },
 
     categoryImage(e) {
-      this.category.category_image = e.target.files[0];
+      var vm = this;
+      vm.isloading = true;
+      vm.category_image_error = "";
+      var reader = new FileReader();
+
+      //Read the contents of Image File.
+      reader.readAsDataURL(e.target.files[0]);
+
+      // size validation
+
+      if (e.target.files[0].size >= 4380793) {
+        vm.category_image_error = "Size must not exceed 4.13 MB.";
+        return false;
+      }
+
+      reader.onload = function (ev) {
+        //Initiate the JavaScript Image object.
+        var image = new Image();
+
+        //Set the Base64 string return from FileReader as source.
+        image.src = ev.target.result;
+
+        //Validate the File Height and Width.
+        image.onload = function () {
+          var height = this.height;
+          var width = this.width;
+          if (height > 7600 || width > 7600) {
+            vm.category_image_error = "Height and Width must not exceed 100px.";
+
+            return false;
+          } else {
+            vm.category.category_image = e.target.files[0];
+          }
+        };
+      };
+      vm.isloading = false;
     },
     clear_form_field() {
       for (let data in this.category) {

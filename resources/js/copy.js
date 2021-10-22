@@ -42,6 +42,10 @@ Vue.use(Vue2Editor);
 
 // import ImageUploader from 'vue-image-upload-resize'
 // Vue.use(ImageUploader);
+//vue js social sharing
+import VueSocialSharing from 'vue-social-sharing'
+
+Vue.use(VueSocialSharing);
 
 
 
@@ -64,6 +68,8 @@ const routes = [
     { path: '/enquiry-table', component: require('./components/admins/enquiriesTable.vue').default },
     { path: '/joined-students', component: require('./components/admins/joinedStudents.vue').default },
     { path: '/dropped-list', component: require('./components/admins/droppedList.vue').default },
+    { path: '/testimonial-table', component: require('./components/admins/testimonialsTable.vue').default },
+
 
 //   { path: '/enquiry-test', component: require('./components/enquiryTest.vue').default },
 
@@ -100,6 +106,7 @@ Vue.component('batches-page', require('./components/admins/batches.vue').default
 
 Vue.component('user-index-courses', require('./components/users/indexCoursePage.vue').default);
 Vue.component('user-index-categories', require('./components/users/indexCategoryPage.vue').default);
+Vue.component('user-index-testimonials', require('./components/users/indexTestimonials.vue').default);
 
 Vue.component('user-main-courses', require('./components/users/mainCoursePage.vue').default);
 Vue.component('user-single-courses', require('./components/users/singleCoursePage.vue').default);
@@ -118,6 +125,9 @@ Vue.component('the-loading', require('./components/admins/loading.vue').default 
 
 Vue.component('certificate-landing-page', require('./components/users/certificateLandingPage.vue').default);
 
+
+Vue.component('search-courses', require('./components/users/search.vue').default);
+Vue.component('add-testimonial', require('./components/admins/addTestimonial.vue').default );
 
 
 const app = new Vue({
