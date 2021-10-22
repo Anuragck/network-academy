@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                             </div>
-                        
+
 
                             <div class="col-md-3 col-sm-6 col-xs-6 filtr-item " data-category="mix, photography">
                                 <div class="portfolio-block">

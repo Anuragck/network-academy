@@ -60,7 +60,7 @@
     <div class="social-media">
 
         <div class="social-icons">
-<p class="text-muted">The Certificate Number can be found at the top of each certificate.</p>
+<p class="text-muted">The Certificate Verification Link can be found at the bottom of each certificate.</p>
         </div>
 
     </div>

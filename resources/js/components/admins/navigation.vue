@@ -65,11 +65,6 @@
         >
       </li>
 
- <li>
-        <router-link to="/placements-table"
-          ><i class="fas fa-user-graduate"></i>Placements Add</router-link
-        >
-      </li>
     </ul>
   </div>
 </template>

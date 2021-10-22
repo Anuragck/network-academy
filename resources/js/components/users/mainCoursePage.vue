@@ -9,7 +9,7 @@
         <!-- <span class="navbar-brand mb-0 h1 px-3">Courses
          </span><span class="vl">  </span>  -->
 
-      <span class="navbar-brand mb-0 h1 px-3 font-weight-bold">  Courses </span>
+      <span class="navbar-brand mb-0 h1 px-3 font-weight-bold"  ><a href="/courses/0" style="color:#264284;">  Courses </a></span>
 
         <div v-for="category in category_list" :key="category.id">
           <i class="fas fa-chevron-right"></i>

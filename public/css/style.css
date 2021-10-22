@@ -2013,7 +2013,7 @@ border-color: #fff;
 ==================================================================*/
 
 .testimonial {
-  padding-top: 100px;
+  padding-top: 40px;
   background: #264284;
   position: relative;
   padding-bottom: 0px;
@@ -2034,7 +2034,7 @@ border-color: #fff;
 .testimonial .item i {
   font-size: 60px;
   color: #fff;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   display: inline-block;
 }
 

@@ -9,7 +9,7 @@ Welcome Slider
       <div class="row">
         <div class="col-md-12">
           <div class="block pt-5 mt-3">
-            <div class="row bg-light animate-in-down shadow-lg">
+            <div class="row animate-in-down shadow-lg">
               <div class="p-4 col-md-6 align-self-center text-color pl-5">
                 <p class="pb-2">
 
@@ -61,7 +61,7 @@ Welcome Slider
                 </div>
               </div>
 
-              <div class="p-0 col-md-6 main-course-single">
+              <div class="p-0 col-md-6 main-course-single ">
                 <img
                   class="d-block img-fluid float-right"
                   :src="'/uploads/course_images/' + single_course.course_image"

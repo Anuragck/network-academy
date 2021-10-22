@@ -19,6 +19,7 @@ class CreateTestimonialsTable extends Migration
             $table->string('designation');
 $table->string('testimonial_image');
             $table->text('description');
+            $table->string('section_bit');
             $table->timestamps();
         });
     }

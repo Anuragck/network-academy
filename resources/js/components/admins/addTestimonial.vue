@@ -34,6 +34,35 @@
                       <label
                         for="course-starting-date"
                         class="text-muted font-weight-bold"
+                        >Select Section</label
+                      >
+
+                      <select
+                        class="form-control rounded-pill shadow-sm"
+                        id="Section"
+                        name="section"
+                        v-model="testimonials.section"
+                      >
+                        <option value="" disabled selected>
+                          Select Section
+                        </option>
+                        <option value="placements">Placements</option>
+                        <option value="testimonial">Testimonials</option>
+                      </select>
+
+                      <small
+                        class="text-danger"
+                        v-if="errors.testimonial_name"
+                        >{{ errors.testimonial_name[0] }}</small
+                      >
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="form-group">
+                      <label
+                        for="course-starting-date"
+                        class="text-muted font-weight-bold"
                         >Enter Testimonial Name</label
                       >
 
@@ -96,9 +125,11 @@
                         style="border-radius: 25px 25px 25px 25px; width: 100%"
                       />
 
-                       <small class="text-danger" v-if="errors.testimonial_image">{{
-                        errors.testimonial_image[0]
-                      }}</small>
+                      <small
+                        class="text-danger"
+                        v-if="errors.testimonial_image"
+                        >{{ errors.testimonial_image[0] }}</small
+                      >
                     </div>
                   </div>
                 </div>
@@ -109,7 +140,9 @@
                       <label
                         for="Coursename"
                         class="text-muted font-weight-bold"
-                        >Description
+                        >Description<small class="text-muted ml-2"
+                          >300 to 350 characters (Recommended)</small
+                        >
                       </label>
                       <textarea
                         class="form-control form-height item shadow-sm"
@@ -118,7 +151,11 @@
                         placeholder="Enter description here"
                         style="border-radius: 20px"
                         v-model="testimonials.description"
-                      ></textarea>
+                        @keyup="charCount()"
+                      ></textarea
+                      ><span class="float-right text-danger"
+                        >{{ totalcharacter }} characters</span
+                      >
 
                       <small class="text-danger" v-if="errors.description">{{
                         errors.description[0]
@@ -162,8 +199,10 @@ export default {
   props: ["edit"],
   data() {
     return {
+      totalcharacter: 0,
       title: "Add Testimonial",
       testimonials: {
+        section: "",
         testimonial_name: "",
         testimonial_image: "",
         designation: "",
@@ -180,6 +219,13 @@ export default {
       bus.$on("edit-testimonial", function (testmonial) {
         _this.clear_form_field();
         _this.testimonials.id = testmonial.id;
+        if (testmonial.section_bit == "1") {
+          _this.testimonials.section = "testimonial";
+        }
+        if (testmonial.section_bit == "2") {
+          _this.testimonials.section = "placements";
+        }
+_this.totalcharacter=testmonial.description.length;
         _this.testimonials.testimonial_name = testmonial.name;
         _this.testimonials.designation = testmonial.designation;
         _this.testimonials.description = testmonial.description;
@@ -188,6 +234,9 @@ export default {
   },
 
   methods: {
+    charCount: function () {
+      this.totalcharacter = this.testimonials.description.length;
+    },
     testimonialImage(e) {
       this.testimonials.testimonial_image = e.target.files[0];
     },
@@ -195,10 +244,10 @@ export default {
     addTestimonial() {
       let upload = new FormData();
 
- if (this.edit) {
-
+      if (this.edit) {
         upload.append("id", this.testimonials.id);
       }
+      upload.append("section", this.testimonials.section);
       upload.append("testimonial_name", this.testimonials.testimonial_name);
 
       upload.append("testimonial_image", this.testimonials.testimonial_image);
@@ -231,6 +280,7 @@ export default {
       for (let er in this.errors) {
         this.errors[er] = "";
       }
+this.totalcharacter=0;
       this.$refs.testimonial_image.value = "";
     },
   },

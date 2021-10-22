@@ -15,7 +15,7 @@
                 <div class="col-md-12 ">
                     <div class="block ">
                         <h1 class="wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".3s">Routing You <br> To <span
-                                class="success-custom">Success</span></h1>
+                                class="success-custom">Success </span></h1>
                         {{-- <p class="wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur
                         adipisicing elit. Nulla, ad rerum repellat. Sequi, labore, illo. Ducimus voluptates quidem obcaecati, ad.
                     </p> --}}
@@ -186,15 +186,15 @@ aria-hidden="true"
 
 
 
-<!-- Start Testimonial
+ <!-- Start Testimonial
 =========================================== -->
 
-<section class="testimonial section" id="testimonial">
+{{-- <section class="testimonial section" id="testimonial">
     <div class="container ">
         <div class="row">
             <div class="col-lg-12">
                 <!-- testimonial wrapper -->
-                <div class="testimonial-slider">
+                <div class="testimonial-slider"> --}}
 
 
 <user-index-testimonials  :testimonials ="{{json_encode($testimonials)}}" >   </user-index-testimonials>
@@ -234,7 +234,7 @@ aria-hidden="true"
 
 
 
-                </div>
+                {{-- </div>
 
 
             </div> 		<!-- end col lg 12 -->
@@ -242,7 +242,7 @@ aria-hidden="true"
     </div>       <!-- End container -->
 </section>    <!-- End Section -->
 
-    <!-- End testimonials Section -->
+    <!-- End testimonials Section --> --}}
 
 
 

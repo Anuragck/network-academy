@@ -12,7 +12,7 @@ class UserPagesController extends Controller
 {
     public function index(){
 
-$testimonials= Testimonial::all();
+$testimonials= Testimonial::where('section_bit' ,1)->get();
 
         return view('users.index',compact('testimonials'));
 

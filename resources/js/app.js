@@ -69,7 +69,7 @@ const routes = [
     { path: '/joined-students', component: require('./components/admins/joinedStudents.vue').default },
     { path: '/dropped-list', component: require('./components/admins/droppedList.vue').default },
     { path: '/testimonial-table', component: require('./components/admins/testimonialsTable.vue').default },
-    { path: '/placements-table', component: require('./components/admins/placementsTable.vue').default },
+
 
 //   { path: '/enquiry-test', component: require('./components/enquiryTest.vue').default },
 

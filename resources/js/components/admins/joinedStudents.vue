@@ -1,9 +1,14 @@
 <template>
+
   <div>
+
+
+
     <!--loading preloader start-->
     <the-loading v-if="loading"></the-loading>
     <!--loading preloader end-->
     <!-- course table  -->
+
 
     <div class="card mt-3 shadow" v-else>
       <div class="card-header">
@@ -179,6 +184,7 @@
                   tabindex="-1"
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
+                data-backdrop="static"
                 >
                   <div class="modal-dialog">
                     <div class="modal-content">
@@ -194,6 +200,7 @@
 
                           aria-label="Close"
                           @click.prevent="clear_form_field()"
+                            :disabled="testLoad"
 
                         >
                           <span aria-hidden="true">&times;</span>
@@ -201,10 +208,10 @@
                       </div>
                       <div class="modal-body">
 
-<!-- <div v-if="testLoad">
-
-</div> -->
-                 <div class="container">
+<div v-if="testLoad">
+<img src="/images/loading2.gif" class="img-fluid mx-auto d-block" alt="Responsive image" width="285px">
+</div>
+                 <div class="container" v-else>
                           <form method="POST" enctype="multipart/form-data">
                             <div class="row">
                               <div class="col">
@@ -266,6 +273,7 @@
                           class="btn btn-dark btn-sm rounded-pill"
                           data-dismiss="modal"
                           @click.prevent="clear_form_field()"
+                        :disabled="testLoad"
                         >
                           Close
                         </button>
@@ -338,8 +346,11 @@
 import axios from "axios";
 import moment from "moment";
 export default {
+
   data() {
     return {
+
+
       todayDate: moment().format("YYYY-MM-DD"),
       course_completed_date: moment().format("YYYY-MM-DD"),
 
@@ -362,8 +373,11 @@ export default {
 testLoad:false,
     };
   },
+mounted(){
 
+},
   created() {
+
     this.getJoined();
     this.getCoursesForFilter();
     this.getBatchesForFilter();
@@ -373,6 +387,8 @@ testLoad:false,
     });
   },
   methods: {
+
+
     clear_form_field() {
       this.course_completed_date = moment().format("YYYY-MM-DD");
     },
@@ -386,6 +402,7 @@ testLoad:false,
     },
 
     getJoined(page = 1) {
+
       this.loading = true; //the loading begin
       axios
         .get("admin/getJoinedStudents?page=" + page, {
@@ -408,6 +425,8 @@ testLoad:false,
     },
 
     courseCompleted(joined) {
+
+
 this.testLoad=true;
 
       let data = {
@@ -487,11 +506,15 @@ $('#completedDateModal').modal('hide');
     batch_time: function () {
       this.getJoined();
     },
+
   },
+
 };
+
 </script>
 
 <style scoped>
+
 
 </style>
 

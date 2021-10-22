@@ -60,6 +60,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Designation</th>
                 <th scope="col">Description</th>
+            <th scope="col">Section</th>
                 <th scope="col" class="text-center">Actions</th>
               </tr>
             </thead>
@@ -78,6 +79,8 @@
                 <td v-if="testmonial.description.length >= 50">
                   {{ testmonial.description.substring(0, 50) + ".." }}
                 </td>
+<td class="" v-if="testmonial.section_bit == '1'"><span class="badge badge-pill badge-primary">Testimonial</span></td>
+<td class="" v-if="testmonial.section_bit == '2'"><span class="badge badge-pill badge-success">Placements</span></td>
                 <td class="text-center">
                   <button
                     type="button"

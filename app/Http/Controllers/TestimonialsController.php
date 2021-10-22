@@ -27,6 +27,13 @@ public function addTestimonial(Request $request){
         } else
 
             $testimonials = new Testimonial;
+
+            if($request->section == 'testimonial'){
+                $testimonials->section_bit='1';
+            }
+            if($request->section == 'placements'){
+                $testimonials->section_bit='2';
+            }
             $testimonials->name=$request->testimonial_name;
             $testimonials->designation=$request->designation;
             $testimonials->description=$request->description;
