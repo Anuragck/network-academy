@@ -11,7 +11,7 @@ class AdminDashboardCountController extends Controller
 {
     public function getCountData(){
 
-        $today = Carbon::now()->format('Y-m-d', 'UTC');
+        // $today = Carbon::today();
 
 
         $totalEnquiry = CourseEnquiry::all();
@@ -26,10 +26,10 @@ class AdminDashboardCountController extends Controller
         $totalPending = CourseEnquiry::all()->where('lead_status','0');
         $allPending=$totalPending->count();
 
-        $todayEnquiry = CourseEnquiry::all()->where('created_at',$today);
+        $todayEnquiry = CourseEnquiry::all()->where('created_at' ,'>=' ,Carbon::today());
         $todayEnq=$todayEnquiry->count();
 
-        $todayJoined = JoinedStudent::all()->where('created_at',$today);
+        $todayJoined = JoinedStudent::all()->where('created_at' ,'>=' ,Carbon::today());
         $allTodayJoined=$todayJoined->count();
 
         return [

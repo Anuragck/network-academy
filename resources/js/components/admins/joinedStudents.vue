@@ -209,7 +209,7 @@
                       <div class="modal-body">
 
 <div v-if="testLoad">
-<img src="/images/loading2.gif" class="img-fluid mx-auto d-block" alt="Responsive image" width="285px">
+<img src="/images/loading3.gif" class="img-fluid mx-auto d-block" alt="Responsive image" width="285px">
 </div>
                  <div class="container" v-else>
                           <form method="POST" enctype="multipart/form-data">
