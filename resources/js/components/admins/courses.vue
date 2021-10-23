@@ -263,7 +263,12 @@ v-model="course.course_duration_type"
 
                     <small class="text-danger" v-if="errors.course_image">
                       {{ errors.course_image[0] }}</small
-                    >
+                    >  <small
+                        class="text-danger"
+                        v-if="course_image_error != ''"
+                      >
+                        {{ course_image_error }}</small
+                      >
                   </div>
 
                   <!--  <div class="form-group">
@@ -400,6 +405,7 @@ export default {
         course_image: "",
         course_syllabus: "",
       },
+      course_image_error:'',
       categories: {},
       errors: {},
     };
@@ -508,43 +514,49 @@ vm.course.course_duration_type = course.course_duration_type;
       this.course.course_syllabus = v.target.files[0];
       this.isloading = false;
     },
-    CourseImage(ev) {
-      this.isloading = true;
-      var image;
-      var vm = this;
-      const file = ev.target.files[0];
-      console.log(file);
-      if (!file) return;
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = function (event) {
-        const imgElement = document.createElement("img");
-        imgElement.src = event.target.result;
-        imgElement.onload = function (e) {
-          const canvas = document.createElement("canvas");
-          // const MAX_WIDTH = 400;
-          const MAX_WIDTH = 970;
-          // const scaleSize = MAX_WIDTH / e.target.width;
-          canvas.width = MAX_WIDTH;
-          // canvas.height = e.target.height * scaleSize;
-          canvas.height = 680;
-          const ctx = canvas.getContext("2d");
-          ctx.drawImage(e.target, 0, 0, canvas.width, canvas.height);
-          const srcEncoded = ctx.canvas.toDataURL(e.target, "image/jpeg");
-          const url = srcEncoded;
-          fetch(url)
-            .then((res) => res.blob())
-            .then((blob) => {
-              const file2 = new File([blob], "Filename.jpeg", {
-                type: "image/png",
-              });
-              image = file2;
-              vm.course.course_image = image;
-            });
+    CourseImage(e) {
+
+      
+      
+       var vm = this;
+
+      vm.isloading = true;
+      vm.course_image_error = "";
+      var reader = new FileReader();
+
+      //Read the contents of Image File.
+      reader.readAsDataURL(e.target.files[0]);
+
+      // size validation
+
+      if (e.target.files[0].size >= 4380793) {
+        vm.course_image_error = "Size must not exceed 4.13 MB.";
+        return false;
+      }
+
+      reader.onload = function (ev) {
+        //Initiate the JavaScript Image object.
+        var image = new Image();
+
+        //Set the Base64 string return from FileReader as source.
+        image.src = ev.target.result;
+
+        //Validate the File Height and Width.
+        image.onload = function () {
+          var height = this.height;
+          var width = this.width;
+          if (height > 7600 || width > 7600) {
+            vm.course_image_error =
+              "Height and Width must not exceed 100px.";
+
+            return false;
+          } else {
+            vm.course.course_image = e.target.files[0];
+          }
         };
       };
 
-      this.isloading = false;
+     vm.isloading = false;
     },
     clear_form_field() {
       for (let data in this.course) {

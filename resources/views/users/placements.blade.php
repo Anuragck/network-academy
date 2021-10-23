@@ -15,7 +15,6 @@
 </section>
 
 
-
 <!--
 Start About Section
 ==================================== -->
@@ -61,6 +60,7 @@ Start About Section
 
                     <!-- section title -->
                     <div class="col-12">
+
                         <div class="title text-center ">
                             <h2>Placements</h2>
 
@@ -68,7 +68,7 @@ Start About Section
                         </div>
                     </div>
                     <!-- /section title -->
-
+                    <user-placements></user-placements>
                     <!-- team member -->
                     <div class="col-md-3 col-sm-6 ">
                         <div class="team-member text-center">
@@ -157,6 +157,7 @@ Start About Section
 
     </div>
 </div>
+                        </div></div>
 <!-- end team member -->
                 </div> <!-- End row -->
             </div> <!-- End container -->

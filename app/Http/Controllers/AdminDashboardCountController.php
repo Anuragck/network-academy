@@ -26,11 +26,12 @@ class AdminDashboardCountController extends Controller
         $totalPending = CourseEnquiry::all()->where('lead_status','0');
         $allPending=$totalPending->count();
 
-        $todayEnquiry = CourseEnquiry::all()->where('created_at' ,'>=' ,Carbon::today());
+        $todayEnquiry = CourseEnquiry::all()->where('created_at', '>=', Carbon::today());
         $todayEnq=$todayEnquiry->count();
 
-        $todayJoined = JoinedStudent::all()->where('created_at' ,'>=' ,Carbon::today());
+        $todayJoined = JoinedStudent::all()->where('created_at', '>=', Carbon::today());
         $allTodayJoined=$todayJoined->count();
+
 
         return [
 

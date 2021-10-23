@@ -17,7 +17,8 @@ class CourseCategoryController extends Controller
 
             "category_name"  => 'required',
 
-            "category_image"  => 'required|image|mimes:jpeg,png,jpg',
+            "category_image"   => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:width=500,height=500',
+
 
         ]);
 
@@ -36,7 +37,16 @@ class CourseCategoryController extends Controller
 
 
         if ($request->hasFile('category_image')) {
+
+
+
+
             $img_ext = $request->file('category_image')->getClientOriginalExtension();
+
+            $size= $request->file('category_image')->getSize();
+
+
+
             $filename = $request->category_name  . time() . '.' . $img_ext;
             $path = $request->file('category_image')->move(public_path('uploads/category_images'), $filename); //image save public folder / uploads/category_upload
 
