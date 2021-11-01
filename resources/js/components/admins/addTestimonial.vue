@@ -112,8 +112,8 @@
                       <label
                         for="course-category-img"
                         class="text-muted font-weight-bold"
-                        >Course Image</label
-                      >
+                        >Image</label
+                      ><small class="text-muted ml-2">Recommended diamensions 400 to 430 x  400 to 430</small>
                       <input
                         type="file"
                         class="form-control shadow-sm pb-3"
@@ -262,8 +262,8 @@ _this.totalcharacter=testmonial.description.length;
 
       // size validation
 
-      if (e.target.files[0].size >= 4380793) {
-        vm.testimonial_image_error = "Size must not exceed 4.13 MB.";
+      if (e.target.files[0].size >= 200000) {
+        vm.testimonial_image_error = "Size must not exceed 200kb.";
         return false;
       }
 
@@ -278,9 +278,9 @@ _this.totalcharacter=testmonial.description.length;
         image.onload = function () {
           var height = this.height;
           var width = this.width;
-          if (height > 7600 || width > 7600) {
+          if (height < 400 || height > 430 &&  width < 400 || width > 430 ) {
             vm.testimonial_image_error =
-              "Height and Width must not exceed 100px.";
+              "Image has invalid image dimension";
 
             return false;
           } else {
@@ -290,7 +290,7 @@ _this.totalcharacter=testmonial.description.length;
       };
 
       vm.isloading = false;
-      
+
     },
 
     addTestimonial() {

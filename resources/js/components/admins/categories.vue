@@ -61,7 +61,7 @@
                         for="course-category-img"
                         class="text-muted font-weight-bold"
                         >Course Category Image</label
-                      >
+                      ><small class="text-muted ml-2">Recommended  image diamensions 520 to 550 x  320 to 350</small>
                       <input
                         type="file"
                         class="form-control shadow-sm pb-3"
@@ -193,8 +193,8 @@ export default {
 
       // size validation
 
-      if (e.target.files[0].size >= 4380793) {
-        vm.category_image_error = "Size must not exceed 4.13 MB.";
+      if (e.target.files[0].size >= 200000) {
+        vm.category_image_error = "Size must not exceed 200 kb.";
         return false;
       }
 
@@ -209,8 +209,8 @@ export default {
         image.onload = function () {
           var height = this.height;
           var width = this.width;
-          if (height > 7600 || width > 7600) {
-            vm.category_image_error = "Height and Width must not exceed 100px.";
+          if (height < 320 || height > 350 &&  width < 520 || width > 550 ) {
+            vm.category_image_error = "Image has invalid image dimension";
 
             return false;
           } else {

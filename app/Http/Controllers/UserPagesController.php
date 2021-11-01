@@ -55,7 +55,9 @@ $category_list=CourseCategory::orderBy('id', 'DESC')->get();
     }
 
     public function placements(){
-        return view('users.placements');
+
+        $placement_details= Testimonial::all()->where('section_bit','=',2);
+        return view('users.placements',compact('placement_details'));
     }
 
     public function contact(){

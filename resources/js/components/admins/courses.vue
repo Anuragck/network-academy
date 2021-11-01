@@ -248,7 +248,7 @@ v-model="course.course_duration_type"
                   <div class="form-group">
                     <label for="Coursename" class="text-muted font-weight-bold"
                       >Course Image</label
-                    >
+                    ><small class="text-muted ml-2">Recommended  image diamensions 950 to 980  x  660 to 680</small>
                     <input
                       type="file"
                       class="form-control shadow-sm pb-3"
@@ -516,8 +516,8 @@ vm.course.course_duration_type = course.course_duration_type;
     },
     CourseImage(e) {
 
-      
-      
+
+
        var vm = this;
 
       vm.isloading = true;
@@ -529,8 +529,8 @@ vm.course.course_duration_type = course.course_duration_type;
 
       // size validation
 
-      if (e.target.files[0].size >= 4380793) {
-        vm.course_image_error = "Size must not exceed 4.13 MB.";
+      if (e.target.files[0].size >= 200000) {
+        vm.course_image_error = "Size must not exceed 200 kb.";
         return false;
       }
 
@@ -545,9 +545,9 @@ vm.course.course_duration_type = course.course_duration_type;
         image.onload = function () {
           var height = this.height;
           var width = this.width;
-          if (height > 7600 || width > 7600) {
+          if (height < 660 || height > 700 &&  width < 950 || width > 980) {
             vm.course_image_error =
-              "Height and Width must not exceed 100px.";
+              "Image has invalid image dimension";
 
             return false;
           } else {
