@@ -197,6 +197,12 @@ Vue.component(
     require("./components/users/userPlacements.vue").default
 );
 
+Vue.component(
+    "change-password",
+    require("./components/changePassword.vue").default
+);
+
+
 const app = new Vue({
     el: "#app",
     router

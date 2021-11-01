@@ -16,7 +16,9 @@ use App\Http\Controllers\FeePaymentController;
 use App\Http\Controllers\FollowUpController;
 use App\Http\Controllers\JoinedStudentsController;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\PlacementsController;
 use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\preventBackHistory;
@@ -66,10 +68,11 @@ Route::get('/get-enquiry-batches', [CourseEnquiryController::class, 'getEnquiryB
 
 
 
+Route::get('/get-placements', [PlacementsController::class, 'getPlacements']);
 
 
-
-
+//Change password
+Route::post('updatePassword',[ChangePasswordController::class,'changePassword']);
 
 
 

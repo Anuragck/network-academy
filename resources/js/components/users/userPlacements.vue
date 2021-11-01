@@ -1,213 +1,117 @@
 <template>
-<div>
+  <div>
 
-
-    <div class="container my-4">
-
-<!--Carousel Wrapper-->
-<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-
-  <!--Indicators-->
-  <ol class="carousel-indicators">
-    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-    <li data-target="#multi-item-example" data-slide-to="1"></li>
-
-  </ol>
-  <!--/.Indicators-->
-
-  <!--Slides-->
-  <div class="carousel-inner" role="listbox">
-
-    <!--First slide-->
-    <div class="carousel-item active ">
-
-      <div class="col-md-3  " style="float:left">
-       <div class="card mb-2 ">
-          <img class="card-img-top"
-            src="/images/team/member-3.jpg" alt="Card image cap">
-
-          <div class="card-body ">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
+    <!-- partial:index.partial.html -->
+    <div class="slider">
+      <div class="slide-track">
+        <div v-for="placement in placements" :key="placement.id">
+          <div class="slide">
+            <div class="card" style="width: 18rem">
+              <img src="" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+            <!--{{ placement.id }}
+			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />-->
           </div>
         </div>
       </div>
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-3.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-3.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-       <div class="col-md-3" style="float:left">
-       <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-3.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
     </div>
-    <!--/.First slide-->
-
-    <!--Second slide-->
-    <div class="carousel-item">
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-1.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-1.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-1.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-1.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <!--/.Second slide-->
-
-
-
+    <!-- partial -->
   </div>
-  <!--/.Slides-->
- <!--Controls-->
- <!-- <div class="controls-top ">
-    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-        class="fas fa-chevron-right"></i></a>
-  </div>-->
-  <!--/.Controls-->
-
-</div>
-<!--/.Carousel Wrapper--></div>
-
-</div>
 </template>
 <script>
- import axios from 'axios';
+import axios from "axios";
 export default {
-
   data() {
     return {
-
-
+      placements: {},
     };
   },
 
   created() {
-
-
-
+    this.getPlacements();
   },
 
-  methods:{
-
-
-
-
-  }
+  methods: {
+    getPlacements() {
+      axios
+        .get("get-placements")
+        .then((response) => {
+          this.placements = response.data;
+          console.log(this.placements);
+        })
+        .catch((err) => {});
+    },
+  },
 };
-
 </script>
 
 <style scoped>
+/***************************/
 
-.carousel-indicators li {
-margin-top: 200px;
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin: 15px;
-    text-indent: 1;
-    cursor: pointer;
-    border: none;
-    border-radius: 50%;
-    background-color: #0d0d2e;
-    box-shadow: inset 1px 1px 1px 1px rgba(17, 30, 66, 0.685);
+@-webkit-keyframes scroll {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(calc(-250px * 7));
+    transform: translateX(calc(-250px * 7));
+  }
 }
-.carousel-indicators .active {
-    width: 16px;
-    height: 16px;
-margin: 15px;
 
-    background-color: #271b46bd;
+@keyframes scroll {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(calc(-250px * 7));
+    transform: translateX(calc(-250px * 7));
+  }
+}
+.slider {
+  background: pr;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+  height: 200px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 960px;
+}
+.slider::before,
+.slider::after {
+  background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+.slider::after {
+  right: 0;
+  top: 0;
+  -webkit-transform: rotateZ(180deg);
+  transform: rotateZ(180deg);
+}
+.slider::before {
+  left: 0;
+  top: 0;
+}
+.slider .slide-track {
+  -webkit-animation: scroll 40s linear infinite;
+  animation: scroll 40s linear infinite;
+  display: flex;
+  width: calc(250px * 14);
+}
+.slider .slide {
+  height: 100px;
+  width: 250px;
 }
 </style>
+

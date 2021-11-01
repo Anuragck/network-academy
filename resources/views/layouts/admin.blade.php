@@ -61,8 +61,10 @@
                                     <li><a href="" class="dropdown-item"><i class="fas fa-address-card"></i>
                                             Profile</a>
                                     </li>
-                                    <li><a href="" class="dropdown-item"><i class="fas fa-cog"></i> Change
-                                            Password</a>
+                                    <li>
+                                            <a class="dropdown-item" data-toggle="modal" data-target="#passwordChangeModal">
+                                                <i class="fas fa-cog fa-fw"></i>{{ __('Change Password') }}
+                                            </a>
                                     </li>
                                     <div class="dropdown-divider"></div>
                                     {{-- <li><a href="" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a> --}}
@@ -98,6 +100,9 @@
         <div class="content">
             <div class="container-fluid ">
 
+
+
+<change-password></change-password>
 
 
 
