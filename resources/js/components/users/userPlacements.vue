@@ -1,197 +1,136 @@
 <template>
-<div>
+    <div>
+        <section class="team" id="team">
+            <div class="container">
+                <div class="row">
+                    <!-- section title -->
+                    <div class="col-12">
+                        <div class="title text-center ">
+                            <h2>Placements</h2>
 
+                            <div class="border"></div>
+                        </div>
+                    </div>
 
-    <div class="container my-4">
+                    <div
+                        id="carouselExampleControls"
+                        class="carousel slide"
+                        data-ride="carousel"
+                    >
+                        <div class="carousel-inner">
+                            <div
+                                class="carousel-item "
+                                v-for="(placement, index) in placements"
+                                :key="placement.id"
+                                :class="index == 0 ? 'active' : 'no-active'"
+                            >
+                                <div class="row">
+                                    <div
+                                        v-for="person in placement"
+                                        :key="person.id"
+                                    >
+                                        <div class="col pb-2">
+                                            <div
+                                                class="team-member text-center "
+                                                style="max-width: 262.5px"
+                                            >
+                                                <div class="member-photo">
+                                                    <!-- member photo -->
+                                                    <img
+                                                        class="img-fluid"
+                                                        :src="
+                                                            '/uploads/testimonials_images/' +
+                                                                person.testimonial_image
+                                                        "
+                                                        alt="Placement image"
+                                                    />
+                                                    <!-- /member photo -->
 
-<!--Carousel Wrapper-->
-<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+                                                    <!-- /member social profile -->
+                                                </div>
 
-
-  <!--Indicators-->
-  <ol class="carousel-indicators">
-    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-    <li data-target="#multi-item-example" data-slide-to="1"></li>
-
-  </ol>
-  <!--/.Indicators-->
-
-  <!--Slides-->
-  <div class="carousel-inner" role="listbox">
-
-    <!--First slide-->
-    <div class="carousel-item active ">
-
-      <div class="col-md-3  " style="float:left">
-       <div class="card mb-2 ">
-          <img class="card-img-top"
-            src="/images/team/member-3.jpg" alt="Card image cap">
-
-          <div class="card-body ">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-3.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-3.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-       <div class="col-md-3" style="float:left">
-       <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-3.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
+                                                <!-- member name & designation -->
+                                                <div class="member-content">
+                                                    <h3>{{ person.name }}</h3>
+                                                    <span>
+                                                        {{ person.designation }}
+                                                    </span>
+                                                    <p>
+                                                        {{ person.description }}
+                                                    </p>
+                                                </div>
+                                                <!-- /member name & designation -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a
+                            class="carousel-control-prev"
+                            href="#carouselExampleControls"
+                            role="button"
+                            data-slide="prev"
+                        >
+                            <span class="" aria-hidden="true"></span>
+                            <span class="sr-only"></span>
+                        </a>
+                        <a
+                            class="carousel-control-next"
+                            href="#carouselExampleControls"
+                            role="button"
+                            data-slide="next"
+                        >
+                            <span class="" aria-hidden="true"></span>
+                            <span class="sr-only"></span>
+                        </a>
+                    </div>
+                </div>
+                <!-- End row -->
+            </div>
+            <!-- End container -->
+        </section>
+        <!-- End section -->
     </div>
-    <!--/.First slide-->
-
-    <!--Second slide-->
-    <div class="carousel-item">
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-1.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-1.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-1.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="/images/team/member-1.jpg" alt="Card image cap">
-          <div class="card-body">
- <div class=" text-center">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
- </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <!--/.Second slide-->
-
-
-
-  </div>
-  <!--/.Slides-->
- <!--Controls-->
- <!-- <div class="controls-top ">
-    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-        class="fas fa-chevron-right"></i></a>
-  </div>-->
-  <!--/.Controls-->
-
-</div>
-<!--/.Carousel Wrapper--></div>
-
-</div>
 </template>
 <script>
- import axios from 'axios';
+import axios from "axios";
 export default {
+    props: ["placement_details"],
+    data() {
+        return {
+            placements: []
+        };
+    },
 
-  data() {
-    return {
+    created() {
+        this.placementData();
+    },
 
+    methods: {
+        placementData() {
+            const arr = this.placement_details;
 
-    };
-  },
+            function sliceIntoChunks(arr, chunkSize) {
+                const res = [];
+                for (let i = 0; i < arr.length; i += chunkSize) {
+                    const chunk = arr.slice(i, i + chunkSize);
+                    res.push(chunk);
+                }
+                return res;
+            }
 
-  created() {
+            this.placements = sliceIntoChunks(arr, 4);
 
-
-
-  },
-
-  methods:{
-
-
-
-
-  }
+            
+        }
+    }
 };
-
 </script>
 
 <style scoped>
-
 .carousel-indicators li {
-margin-top: 200px;
+    margin-top: 200px;
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -206,7 +145,7 @@ margin-top: 200px;
 .carousel-indicators .active {
     width: 16px;
     height: 16px;
-margin: 15px;
+    margin: 15px;
 
     background-color: #271b46bd;
 }

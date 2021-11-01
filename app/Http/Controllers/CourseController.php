@@ -28,7 +28,7 @@ class CourseController extends Controller
             "course_fee"  => 'required',
             "course_certification_fee"  => 'required',
             "course_certification_code"  => 'required',
-            "course_image"  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:width=500,height=500',
+            "course_image"  => 'required|image|mimes:jpeg,png,jpg,svg|max:200|dimensions:min_width=950,min_height=660,max_width=980,max_height=700',
 
         ]);
 

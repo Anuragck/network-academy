@@ -193,8 +193,8 @@ export default {
 
       // size validation
 
-      if (e.target.files[0].size >= 4380793) {
-        vm.category_image_error = "Size must not exceed 4.13 MB.";
+      if (e.target.files[0].size >= 200000) {
+        vm.category_image_error = "Size must not exceed 200 kb.";
         return false;
       }
 
@@ -209,8 +209,8 @@ export default {
         image.onload = function () {
           var height = this.height;
           var width = this.width;
-          if (height > 7600 || width > 7600) {
-            vm.category_image_error = "Height and Width must not exceed 100px.";
+          if (height < 400 || height > 430 &&  width < 400 || width > 430 ) {
+            vm.category_image_error = "Image has invalid image dimension";
 
             return false;
           } else {

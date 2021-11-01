@@ -17,7 +17,7 @@ class CourseCategoryController extends Controller
 
             "category_name"  => 'required',
 
-            "category_image"   => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:width=500,height=500',
+            "category_image"   => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:200|dimensions:min_width=400,min_height=400,max_width=430,max_height=430',
 
 
         ]);
