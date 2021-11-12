@@ -116,7 +116,7 @@
     </div>
 
     <div class="modal-footer">
-      <img :src="'/uploads/category_images/hardware1636727373.jpg'" alt="" />
+     
     </div>
 
     <!-- category modal ends  -->
