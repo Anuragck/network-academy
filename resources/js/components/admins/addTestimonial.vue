@@ -113,7 +113,9 @@
                         for="course-category-img"
                         class="text-muted font-weight-bold"
                         >Image</label
-                      ><small class="text-muted ml-2">Recommended diamensions 400 to 430 x  400 to 430</small>
+                      ><small class="text-muted ml-2"
+                        >Recommended diamensions 400 to 430 x 400 to 430</small
+                      >
                       <input
                         type="file"
                         class="form-control shadow-sm pb-3"
@@ -131,7 +133,7 @@
                         >{{ errors.testimonial_image[0] }}</small
                       >
 
-                       <small
+                      <small
                         class="text-danger"
                         v-if="testimonial_image_error != ''"
                       >
@@ -216,10 +218,10 @@ export default {
         designation: "",
         description: "",
       },
-      testimonial_image_error:'',
+      testimonial_image_error: "",
       errors: {},
       loading: false,
-        isloading: false,
+      isloading: false,
     };
   },
   created() {
@@ -235,25 +237,39 @@ export default {
         if (testmonial.section_bit == "2") {
           _this.testimonials.section = "placements";
         }
-_this.totalcharacter=testmonial.description.length;
+        _this.totalcharacter = testmonial.description.length;
         _this.testimonials.testimonial_name = testmonial.name;
         _this.testimonials.designation = testmonial.designation;
         _this.testimonials.description = testmonial.description;
+
+        _this.editImage(testmonial);
       });
     }
   },
 
   methods: {
+    editImage(testmonial) {
+      let url = "/uploads/testimonials_images/" + testmonial.testimonial_image;
+
+      fetch(url)
+        .then((response) => response.blob())
+        .then((blob) => {
+          //do stuff here to give the blob some data...
+
+          var file = new File([blob], testmonial.testimonial_image, {
+            lastModified: new Date(),
+          });
+
+          this.testimonials.testimonial_image = file;
+        });
+    },
+
     charCount: function () {
       this.totalcharacter = this.testimonials.description.length;
     },
     testimonialImage(e) {
-
-
-
-
-       var vm = this;
-       vm.isloading = true;
+      var vm = this;
+      vm.isloading = true;
       vm.testimonial_image_error = "";
       var reader = new FileReader();
 
@@ -278,9 +294,8 @@ _this.totalcharacter=testmonial.description.length;
         image.onload = function () {
           var height = this.height;
           var width = this.width;
-          if (height < 400 || height > 430 &&  width < 400 || width > 430 ) {
-            vm.testimonial_image_error =
-              "Image has invalid image dimension";
+          if (height < 400 || (height > 430 && width < 400) || width > 430) {
+            vm.testimonial_image_error = "Image has invalid image dimension";
 
             return false;
           } else {
@@ -290,7 +305,6 @@ _this.totalcharacter=testmonial.description.length;
       };
 
       vm.isloading = false;
-
     },
 
     addTestimonial() {
@@ -332,7 +346,7 @@ _this.totalcharacter=testmonial.description.length;
       for (let er in this.errors) {
         this.errors[er] = "";
       }
-this.totalcharacter=0;
+      this.totalcharacter = 0;
       this.$refs.testimonial_image.value = "";
     },
   },

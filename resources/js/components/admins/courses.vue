@@ -8,7 +8,7 @@
         class="close"
         data-dismiss="modal"
         aria-label="Close"
-@click.prevent="clear_form_field()"
+        @click.prevent="clear_form_field()"
       >
         <span aria-hidden="true">&times;</span>
       </button>
@@ -163,7 +163,7 @@
                       <div class="form-group">
                         <label
                           for="Coursename"
-                          class="text-muted font-weight-bold "
+                          class="text-muted font-weight-bold"
                           >Select Duration Type</label
                         >
 
@@ -171,16 +171,20 @@
                           class="form-control item pb-1 shadow-sm"
                           id="course_duration_type"
                           name="course_duration_type"
-v-model="course.course_duration_type"
+                          v-model="course.course_duration_type"
                         >
                           <option value="">Select Duration Type</option>
                           <option value="Days">Days</option>
-                            <option value="Months">Months</option>
-                            <option value="Years">Years</option>
+                          <option value="Months">Months</option>
+                          <option value="Years">Years</option>
                         </select>
 
-                        <small class="text-danger" v-if="errors.course_duration_type">
-                      {{ errors.course_duration_type[0] }}</small>
+                        <small
+                          class="text-danger"
+                          v-if="errors.course_duration_type"
+                        >
+                          {{ errors.course_duration_type[0] }}</small
+                        >
                       </div>
                     </div>
                   </div>
@@ -248,7 +252,10 @@ v-model="course.course_duration_type"
                   <div class="form-group">
                     <label for="Coursename" class="text-muted font-weight-bold"
                       >Course Image</label
-                    ><small class="text-muted ml-2">Recommended  image diamensions 950 to 980  x  660 to 680</small>
+                    ><small class="text-muted ml-2"
+                      >Recommended image diamensions 950 to 980 x 660 to
+                      680</small
+                    >
                     <input
                       type="file"
                       class="form-control shadow-sm pb-3"
@@ -263,12 +270,10 @@ v-model="course.course_duration_type"
 
                     <small class="text-danger" v-if="errors.course_image">
                       {{ errors.course_image[0] }}</small
-                    >  <small
-                        class="text-danger"
-                        v-if="course_image_error != ''"
-                      >
-                        {{ course_image_error }}</small
-                      >
+                    >
+                    <small class="text-danger" v-if="course_image_error != ''">
+                      {{ course_image_error }}</small
+                    >
                   </div>
 
                   <!--  <div class="form-group">
@@ -398,14 +403,14 @@ export default {
         small_description: "",
         course_description: "",
         course_duration: "",
-        course_duration_type:"",
+        course_duration_type: "",
         course_fee: "",
         course_certification_fee: "",
         course_certification_code: "",
         course_image: "",
         course_syllabus: "",
       },
-      course_image_error:'',
+      course_image_error: "",
       categories: {},
       errors: {},
     };
@@ -426,14 +431,36 @@ export default {
         vm.course.small_description = course.small_description;
         vm.course.course_description = course.course_description;
         vm.course.course_duration = course.course_duration;
-vm.course.course_duration_type = course.course_duration_type;
+        vm.course.course_duration_type = course.course_duration_type;
         vm.course.course_fee = course.course_fee;
         vm.course.course_certification_fee = course.course_certification_fee;
         vm.course.course_certification_code = course.course_certification_code;
+
+         vm.editImage(course);
       });
     }
   },
   methods: {
+
+
+     editImage(course) {
+            let url = "/uploads/course_images/" + course.course_image;
+
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    //do stuff here to give the blob some data...
+
+                    var file = new File([blob], course.course_image, {
+                        lastModified: new Date(),
+                    });
+
+                    this.course.course_image = file;
+                });
+        },
+
+
+
     remaincharCount: function () {
       var remainCharacters =
         this.mincharecter - this.course.small_description.length;
@@ -465,7 +492,7 @@ vm.course.course_duration_type = course.course_duration_type;
       upload.append("small_description", this.course.small_description);
       upload.append("course_description", this.course.course_description);
       upload.append("course_duration", this.course.course_duration);
- upload.append("course_duration_type", this.course.course_duration_type);
+      upload.append("course_duration_type", this.course.course_duration_type);
       upload.append("course_fee", this.course.course_fee);
       upload.append(
         "course_certification_fee",
@@ -515,10 +542,7 @@ vm.course.course_duration_type = course.course_duration_type;
       this.isloading = false;
     },
     CourseImage(e) {
-
-
-
-       var vm = this;
+      var vm = this;
 
       vm.isloading = true;
       vm.course_image_error = "";
@@ -545,9 +569,8 @@ vm.course.course_duration_type = course.course_duration_type;
         image.onload = function () {
           var height = this.height;
           var width = this.width;
-          if (height < 660 || height > 700 &&  width < 950 || width > 980) {
-            vm.course_image_error =
-              "Image has invalid image dimension";
+          if (height < 660 || (height > 700 && width < 950) || width > 980) {
+            vm.course_image_error = "Image has invalid image dimension";
 
             return false;
           } else {
@@ -556,7 +579,7 @@ vm.course.course_duration_type = course.course_duration_type;
         };
       };
 
-     vm.isloading = false;
+      vm.isloading = false;
     },
     clear_form_field() {
       for (let data in this.course) {

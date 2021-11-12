@@ -56,10 +56,15 @@ class CourseController extends Controller
 
 
         if ($request->hasFile('course_image')) {
+
+            $filename = $request->file('course_image')->getClientOriginalName();
+
+            if ($filename != $course->course_image) {
+
             $img_ext = $request->file('course_image')->getClientOriginalExtension();
             $filename = $request->course_name . $course->course_code  . time() . '.' . $img_ext;
             $path = $request->file('course_image')->move(public_path('uploads/course_images'), $filename); //image save public folder / uploads/course_upload
-
+            }
         }
 
         $course->course_image = $filename;

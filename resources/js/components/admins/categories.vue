@@ -61,7 +61,10 @@
                         for="course-category-img"
                         class="text-muted font-weight-bold"
                         >Course Category Image</label
-                      ><small class="text-muted ml-2">Recommended  image diamensions 520 to 550 x  320 to 350</small>
+                      ><small class="text-muted ml-2"
+                        >Recommended image diamensions 520 to 550 x 320 to
+                        350</small
+                      >
                       <input
                         type="file"
                         class="form-control shadow-sm pb-3"
@@ -112,7 +115,9 @@
       <!-- content  ends -->
     </div>
 
-    <div class="modal-footer"></div>
+    <div class="modal-footer">
+      <img :src="'/uploads/category_images/hardware1636727373.jpg'" alt="" />
+    </div>
 
     <!-- category modal ends  -->
   </div>
@@ -138,16 +143,35 @@ export default {
   created() {
     if (this.edit) {
       var vm = this;
+
       vm.title = "Edit Category";
       bus.$on("edit-category", function (category) {
         vm.clear_form_field();
         vm.category.id = category.id;
         vm.category.category_name = category.category_name;
+
+        vm.editImage(category);
       });
     }
   },
 
   methods: {
+    editImage(category) {
+      let url = "/uploads/category_images/" + category.category_image;
+
+      fetch(url)
+        .then((response) => response.blob())
+        .then((blob) => {
+          //do stuff here to give the blob some data...
+
+          var file = new File([blob], category.category_image, {
+            lastModified: new Date(),
+          });
+
+          this.category.category_image = file;
+        });
+    },
+
     addCategory() {
       this.isloading = true;
       let upload = new FormData();
@@ -186,6 +210,7 @@ export default {
       var vm = this;
       vm.isloading = true;
       vm.category_image_error = "";
+
       var reader = new FileReader();
 
       //Read the contents of Image File.
@@ -209,7 +234,7 @@ export default {
         image.onload = function () {
           var height = this.height;
           var width = this.width;
-          if (height < 320 || height > 350 &&  width < 520 || width > 550 ) {
+          if (height < 320 || (height > 350 && width < 520) || width > 550) {
             vm.category_image_error = "Image has invalid image dimension";
 
             return false;
@@ -220,6 +245,7 @@ export default {
       };
       vm.isloading = false;
     },
+
     clear_form_field() {
       for (let data in this.category) {
         this.category[data] = "";

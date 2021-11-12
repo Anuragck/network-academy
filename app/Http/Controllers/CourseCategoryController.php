@@ -39,17 +39,23 @@ class CourseCategoryController extends Controller
         if ($request->hasFile('category_image')) {
 
 
-
-
-            $img_ext = $request->file('category_image')->getClientOriginalExtension();
-
-            $size= $request->file('category_image')->getSize();
+            $filename = $request->file('category_image')->getClientOriginalName();
 
 
 
-            $filename = $request->category_name  . time() . '.' . $img_ext;
-            $path = $request->file('category_image')->move(public_path('uploads/category_images'), $filename); //image save public folder / uploads/category_upload
+            if ($filename != $category->category_image) {
 
+                $img_ext = $request->file('category_image')->getClientOriginalExtension();
+
+                $size = $request->file('category_image')->getSize();
+
+
+
+                $filename = $request->category_name  . time() . '.' . $img_ext;
+                $path = $request->file('category_image')->move(public_path('uploads/category_images'), $filename); //image save public folder / uploads/category_upload
+
+
+            }
         }
 
         $category->category_image = $filename;
@@ -73,16 +79,10 @@ class CourseCategoryController extends Controller
     }
 
 
-  public function getCourseTableCategories()
+    public function getCourseTableCategories()
     {
 
 
         return CourseCategory::orderBy('id', 'DESC')->get();
     }
-
-
-
-
-
-
 }
